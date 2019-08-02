@@ -1,0 +1,1 @@
+include ':app', ':yflLibrary', ':simplezxing', ':update-app-kotlin', ':camera', ':video-compressor'

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:psd="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        tools:context=".ui.TextActivity">
+    <ScrollView
+            android:layout_width="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="normal"/>
+
+            <com.backpacker.yflLibrary.view.pswedit.GridPasswordView
+                    android:id="@+id/gpv_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    app:gpvGridColor="@color/red"
+                    app:gpvLineColor="@color/colorPrimary"
+                    app:gpvTextColor="@color/colorPrimary"
+                    android:layout_marginTop="8dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="app:passwordLength=8"/>
+
+            <com.backpacker.yflLibrary.view.pswedit.GridPasswordView
+                    android:id="@+id/gpv_length"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    app:gpvPasswordLength="8"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="app:textColor / textSize / lineColor / lineWidth"/>
+
+            <com.backpacker.yflLibrary.view.pswedit.GridPasswordView
+                    android:id="@+id/gpv_customUi"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/gridpassword_bg"
+                    app:gpvLineColor="@color/colorPrimary"
+                    app:gpvLineWidth="3dp"
+                    app:gpvTextColor="@color/text_main_bg"
+                    app:gpvTextSize="25sp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="app:passwordTransformation=$"/>
+
+            <com.backpacker.yflLibrary.view.pswedit.GridPasswordView
+                    android:id="@+id/gpv_transformation"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    app:gpvPasswordTransformation="$"/>
+
+            <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                <TextView
+                        android:id="@+id/pswtype_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="app:passwordType="/>
+
+                <Spinner
+                        android:id="@+id/pswtype_sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/pswtype_tv"
+                        android:entries="@array/passwordTypeArr"/>
+
+                <Switch
+                        android:id="@+id/psw_visibility_switcher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+
+            <com.backpacker.yflLibrary.view.pswedit.GridPasswordView
+                    android:id="@+id/gpv_passwordType"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    app:gpvPasswordType="textPassword"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Test OnPasswordChangedListener with twice input"/>
+
+            <com.backpacker.yflLibrary.view.pswedit.GridPasswordView
+                    android:id="@+id/gpv_normail_twice"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    app:gpvPasswordLength="4"
+                    android:layout_marginTop="8dp"/>
+            <com.backpacker.yflLibrary.view.CEditText
+                    android:id="@+id/c_edit_text_view_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:focusStokeColor="@color/colorAccent"
+                    android:layout_marginTop="20dp"
+                    app:height="40dp"
+                    app:spaceWidth="10dp"
+                    app:stokesColor="@color/colorPrimary"/>
+
+            <com.backpacker.yflLibrary.view.CEditText
+                    app:layout_constraintTop_toBottomOf="@id/c_edit_text_view_text"
+                    android:id="@+id/c_edit_text_view_circle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:circleRadius="10dp"
+                    app:circleColor="#000"
+                    app:focusStokeColor="#fff"
+                    app:height="40dp"
+                    app:lineWidth="2px"
+                    app:isDrawCircle="true"
+                    app:lineColor="#000"
+                    app:focusLineColor="#000"
+                    app:spaceWidth="10dp"
+                    app:isDrawLine="true"
+                    app:stokesColor="#fff"/>
+
+            <com.backpacker.yflLibrary.view.CEditText
+                    android:id="@+id/c_edit_text_view"
+                    app:layout_constraintTop_toBottomOf="@id/c_edit_text_view_circle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:height="40dp"
+                    app:focusStokeColor="@color/colorAccent"
+                    app:lineWidth="2px"
+                    app:lineColor="#000"
+                    app:focusLineColor="#FF9100"
+                    app:spaceWidth="10dp"
+                    app:stokesColor="@color/colorPrimary"
+                    app:isDrawLine="true"/>
+            <com.backpacker.yflLibrary.view.PayPsdInputView android:layout_width="match_parent"
+                                                       android:layout_marginTop="10dp"
+                                                       android:inputType="number"
+                                                       psd:maxCount="6"
+                                                       psd:psdType="weChat"
+                                                       psd:rectAngle="4dp"
+                                                       android:id="@+id/new_paw"
+                                                       app:layout_constraintLeft_toLeftOf="parent"
+                                                       app:layout_constraintRight_toRightOf="parent"
+                                                       app:layout_constraintTop_toBottomOf="@id/c_edit_text_view"
+                                                       android:layout_height="wrap_content"/>
+            <com.backpacker.yflLibrary.view.PayPsdInputView android:layout_width="match_parent"
+                                                       android:layout_height="40dp"
+                                                       android:layout_margin="10dp"
+                                                       android:layout_marginTop="20dp"
+                                                       app:layout_goneMarginTop="10dp"
+                                                       app:layout_constraintRight_toRightOf="parent"
+                                                       app:layout_constraintLeft_toLeftOf="parent"
+                                                       android:inputType="number"
+                                                       app:layout_constraintTop_toBottomOf="@id/new_paw"
+                                                       psd:maxCount="6"
+                                                       psd:psdType="bottomLine"/>
+            <com.backpacker.yflLibrary.view.PayPsdInputView android:layout_width="match_parent"
+                                                       android:layout_marginTop="10dp"
+                                                       android:inputType="number"
+                                                       psd:maxCount="6"
+                                                       psd:psdType="weChat"
+                                                       psd:rectAngle="4dp"
+                                                       android:id="@+id/new_pawss"
+                                                       app:layout_constraintLeft_toLeftOf="parent"
+                                                       app:layout_constraintRight_toRightOf="parent"
+                                                       app:layout_constraintTop_toBottomOf="@id/c_edit_text_view"
+                                                       android:layout_height="wrap_content"/>
+            <com.backpacker.yflLibrary.view.PayPsdInputView android:layout_width="match_parent"
+                                                       android:layout_height="40dp"
+                                                       android:layout_margin="10dp"
+                                                       android:layout_marginTop="20dp"
+                                                       app:layout_goneMarginTop="10dp"
+                                                       app:layout_constraintRight_toRightOf="parent"
+                                                       app:layout_constraintLeft_toLeftOf="parent"
+                                                       android:inputType="number"
+                                                       android:id="@+id/new_paws"
+                                                       app:layout_constraintTop_toBottomOf="@id/new_paw"
+                                                       psd:maxCount="6"
+                                                       psd:psdType="bottomLine" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

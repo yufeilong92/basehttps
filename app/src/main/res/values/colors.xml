@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="bule_one">#5584F6</color>
+    <color name="gary_one">#9CA3AF</color>
+    <color name="line">#C7CFDA</color>
+    <color name="red_one">#FC6465</color>
+    <color name="main_bg">#f4f4f4</color>
+    <color name="main_text9">#999999</color>
+    <color name="main_titel_bg">#F9F9F9</color>
+    <color name="main_home_bg">#F1F4F8</color>
+    <color name="text_main_bg">#444A53</color>
+    <color name="text_fu_bg">#9CA3AF</color>
+    <color name="text_gray_bg">#F8F8F8</color>
+    <color name="yellow_one">#EF9823</color>
+    <color name="red_qian">#FFECEA</color>
+</resources>
