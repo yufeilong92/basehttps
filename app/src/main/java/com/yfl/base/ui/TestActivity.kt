@@ -79,6 +79,10 @@ class TestActivity : BaseActivity(), MainView.View {
             showProgress()
             mPresenter!!.requestGson(this)
         }
+        btn_five.setOnClickListener {
+
+        }
+
     }
 
 
