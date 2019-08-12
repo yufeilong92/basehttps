@@ -28,14 +28,17 @@
         </activity>
         <activity android:name=".ui.TestActivity">
         </activity>
-        <activity android:name=".SelectImagerActivity">
-        </activity>
-        <activity android:name=".video.OpenVideoActivity">
+        <activity android:name=".ui.DemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".SelectImagerActivity">
+        </activity>
+        <activity android:name=".video.OpenVideoActivity">
+
         </activity>
         <activity android:name=".video.VideoActivity"></activity>
         <activity
