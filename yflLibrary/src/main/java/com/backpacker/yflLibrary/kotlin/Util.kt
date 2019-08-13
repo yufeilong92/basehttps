@@ -292,6 +292,7 @@ object Util {
         return true
     }
 
+
     /**
      * 获取view 文字
      */

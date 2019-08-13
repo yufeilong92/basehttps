@@ -75,6 +75,7 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     //刷新控件
     implementation 'top.zibin:Luban:1.1.8'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-10'
     implementation project(path: ':camera')
     implementation project(path: ':video-compressor')
