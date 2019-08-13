@@ -1,5 +1,14 @@
 package com.backpacker.yflLibrary.java;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
+
 /**
  * @version V 1.0 xxxxxxxx
  * @Title: kotlin_androidone
@@ -16,5 +25,49 @@ public class StringUtil {
             return true;
         return false;
     }
+    public static String getObjectToStr(View v) {
+        if (v instanceof TextView) {
+            TextView tv = (TextView) v;
+            return tv.getText().toString().trim();
+        }
+        if (v instanceof EditText) {
+            EditText et = (EditText) v;
+            return et.getText().toString().trim();
+        }
+        if (v instanceof Button) {
+            Button btn = (Button) v;
+            return btn.getText().toString().trim();
+        }
+        return "";
+    }
 
+    public static String getStringWid(Context m, int id) {
+        return m.getResources().getString(id);
+    }
+
+
+    public static byte[] bmpToByteArray(final Bitmap bmp, final boolean needRecycle) {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, output);
+        if (needRecycle) {
+            bmp.recycle();
+        }
+
+        byte[] result = output.toByteArray();
+        try {
+            output.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public static boolean isEquest(String com, String coms) {
+        if (com.equals(coms)) {
+            return true;
+        }
+        return false;
+
+    }
 }
