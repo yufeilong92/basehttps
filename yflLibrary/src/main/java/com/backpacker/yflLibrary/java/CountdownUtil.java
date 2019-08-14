@@ -11,15 +11,20 @@ public class CountdownUtil {
     Handler handler = new Handler();
     private static CountdownUtil util;
     private Button button;
+    private int mColor = -1;
 
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
             recLen--;
-            if (recLen ==0) {
+            if (recLen == 0) {
                 button.setText("重新发送");
                 button.setEnabled(true);
-                button.setTextColor(mContext.getResources().getColor(R.color.red));
+                if (mColor == -1) {
+                    button.setTextColor(mContext.getResources().getColor(R.color.red));
+                } else {
+                    button.setTextColor(mContext.getResources().getColor(mColor));
+                }
                 recLen = 60;
                 return;
             }
@@ -29,9 +34,28 @@ public class CountdownUtil {
         }
     };
 
+    /**
+     *
+     * @param context 上下文
+     * @param button  显示按钮
+     */
     public void startTime(Context context, final Button button) {
         this.button = button;
         this.mContext = context;
+        button.setEnabled(false);
+        handler.postDelayed(runnable, 1000);
+    }
+
+    /**
+     *
+     * @param context 上下文
+     * @param color 失败的颜色
+     * @param button  按钮
+     */
+    public void startTime(Context context, int color, final Button button) {
+        this.button = button;
+        this.mContext = context;
+        this.mColor = color;
         button.setEnabled(false);
         handler.postDelayed(runnable, 1000);
     }
