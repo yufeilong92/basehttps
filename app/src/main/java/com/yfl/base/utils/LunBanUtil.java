@@ -68,7 +68,7 @@ public class LunBanUtil {
                             anInterface.imgError();
                         }
                     }
-                });
+                }).launch();
 
 
     }
