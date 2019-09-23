@@ -13,7 +13,7 @@ import android.util.DisplayMetrics;
  * @verdescript 版本号 修改时间  修改人 修改的概要说明
  * @Copyright: 2019
  */
-public class Util {
+public class JavaUtil {
     public static int px2sp(Context context, float pxValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);

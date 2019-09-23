@@ -1,6 +1,5 @@
 package com.backpacker.yflLibrary.kotlin
 
-import com.backpacker.yflLibrary.java.StringUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,7 +24,7 @@ object TimeUtil {
      * @return
      */
     fun getCommonDateStr(datestr: String): String? {
-        if (StringUtil.isEmpty(datestr) || datestr.length <= 19)
+        if (KotlinStringUtil.isEmpty(datestr) || datestr.length <= 19)
             return datestr
         val tmpStr = datestr.substring(0, 19)
         val date = strToDate(tmpStr, null) ?: return tmpStr
@@ -57,7 +56,7 @@ object TimeUtil {
      * @param def 默认时间，如果转换失败则返回默认时间
      */
     fun strToDate(str: String?, formatstr: String, def: Date?): Date? {
-        if (StringUtil.isEmpty(str))
+        if (KotlinStringUtil.isEmpty(str))
             return def
         try {
             val sdf = SimpleDateFormat(formatstr)
@@ -92,7 +91,7 @@ object TimeUtil {
     //截取年月日
     fun getYMDT(str: String): String {
         var time = ""
-        if (!StringUtil.isEmpty(str)) {
+        if (!KotlinStringUtil.isEmpty(str)) {
             val x = str.indexOf(" ")
             if (x == -1)
                 return str
@@ -107,7 +106,7 @@ object TimeUtil {
      * @return
      */
     fun getTimeWString(time: String): Long {
-        if (StringUtil.isEmpty(time)) {
+        if (KotlinStringUtil.isEmpty(time)) {
             return 0
         }
         val date = strToDate(time, null) ?: return 0

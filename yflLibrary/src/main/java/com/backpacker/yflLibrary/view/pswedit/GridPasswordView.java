@@ -23,7 +23,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.backpacker.yflLibrary.java.Util;
+import com.backpacker.yflLibrary.java.JavaUtil;
 import com.backpacker.yflLibrary.view.pswedit.imebugfixer.ImeDelBugFixedEditText;
 import com.example.UtilsLibrary.R;
 
@@ -94,10 +94,10 @@ public class GridPasswordView extends LinearLayout implements PasswordView {
             mTextColor = ColorStateList.valueOf(getResources().getColor(android.R.color.primary_text_light));
         int textSize = ta.getDimensionPixelSize(R.styleable.gridPasswordView_gpvTextSize, -1);
         if (textSize != -1) {
-            this.mTextSize = Util.px2sp(context, textSize);
+            this.mTextSize = JavaUtil.px2sp(context, textSize);
         }
 
-        mLineWidth = (int) ta.getDimension(R.styleable.gridPasswordView_gpvLineWidth, Util.dp2px(getContext(), 1));
+        mLineWidth = (int) ta.getDimension(R.styleable.gridPasswordView_gpvLineWidth, JavaUtil.dp2px(getContext(), 1));
         mLineColor = ta.getColor(R.styleable.gridPasswordView_gpvLineColor, DEFAULT_LINECOLOR);
         mGridColor = ta.getColor(R.styleable.gridPasswordView_gpvGridColor, DEFAULT_GRIDCOLOR);
         mLineDrawable = ta.getDrawable(R.styleable.gridPasswordView_gpvLineColor);

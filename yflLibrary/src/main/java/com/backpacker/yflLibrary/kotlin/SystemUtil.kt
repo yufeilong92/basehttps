@@ -18,8 +18,8 @@ import android.net.ConnectivityManager
 import android.net.Uri
 import com.backpacker.yflLibrary.vo.Constants
 import android.util.DisplayMetrics
-
-
+import com.backpacker.yflLibrary.java.LocaUtil
+import java.io.File
 
 
 /**
@@ -444,5 +444,48 @@ object SystemUtil {
             intent.putExtra("com.android.settings.ApplicationPkgName", context.packageName)
         }
         context.startActivity(intent)
+    }
+    /**
+     * 清除app缓存
+     */
+    fun clearAppCache(context: Context) {
+        // 清除数据缓存
+        clearCacheFolder(context.getFilesDir(), System.currentTimeMillis())
+        clearCacheFolder(context.getCacheDir(), System.currentTimeMillis())
+        // 2.2版本才有将应用缓存转移到sd卡的功能
+        if (LocaUtil.isMethodsCompat(Build.VERSION_CODES.FROYO)) {
+            clearCacheFolder(
+                LocaUtil.getExternalCacheDir(context),
+                System.currentTimeMillis()
+            )
+        }
+    }
+    /**
+     * 清除缓存目录
+     *
+     * @param dir     目录
+     * @param curTime 当前系统时间
+     * @return
+     */
+    private fun clearCacheFolder(dir: File?, curTime: Long): Int {
+        var deletedFiles = 0
+        if (dir != null && dir!!.isDirectory()) {
+            try {
+                for (child in dir!!.listFiles()) {
+                    if (child.isDirectory()) {
+                        deletedFiles += clearCacheFolder(child, curTime)
+                    }
+                    if (child.lastModified() < curTime) {
+                        if (child.delete()) {
+                            deletedFiles++
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+        }
+        return deletedFiles
     }
 }

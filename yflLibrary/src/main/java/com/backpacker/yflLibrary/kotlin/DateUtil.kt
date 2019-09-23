@@ -70,35 +70,35 @@ object DateUtil {
     }
 
     fun getDate(time: String?): String {
-        if (StringUtil.isEmpty(time)) return getNewDateTime()
+        if (KotlinStringUtil.isEmpty(time)) return getNewDateTime()
         val sdf = SimpleDateFormat(PATTERN_YMDHMS)
         return sdf.format(time)
     }
     fun getDateChinese(time: String?): String {
-        if (StringUtil.isEmpty(time)) return getNewDateTime()
+        if (KotlinStringUtil.isEmpty(time)) return getNewDateTime()
         val sdf = SimpleDateFormat(PATTERN_YMDHMS_CHINESE)
         return sdf.format(time)
     }
     fun gettTime(time: String?): String {
-        if (StringUtil.isEmpty(time)) return getNewTime()
+        if (KotlinStringUtil.isEmpty(time)) return getNewTime()
         val sdf = SimpleDateFormat(PATTERN_HMS)
         return sdf.format(time)
     }
 
     fun gettTimeChinese(time: String?): String {
-        if (StringUtil.isEmpty(time)) return getNewTimeWithChinese()
+        if (KotlinStringUtil.isEmpty(time)) return getNewTimeWithChinese()
         val sdf = SimpleDateFormat(PATTERN_HMS_CHINESE)
         return sdf.format(time)
     }
 
     fun gettDateChinese(time: String?): String {
-        if (StringUtil.isEmpty(time)) return getNewDateWithChinese()
+        if (KotlinStringUtil.isEmpty(time)) return getNewDateWithChinese()
         val sdf = SimpleDateFormat(PATTERN_YMD_CHINESE)
         return sdf.format(time)
     }
 
     fun gettDate(time: String?): String {
-        if (StringUtil.isEmpty(time)) return getNewDate()
+        if (KotlinStringUtil.isEmpty(time)) return getNewDate()
         val sdf = SimpleDateFormat(PATTERN_YMD)
         return sdf.format(time)
     }

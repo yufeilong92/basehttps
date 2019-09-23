@@ -10,7 +10,7 @@ package com.backpacker.yflLibrary.kotlin
  * @verdescript  版本号 修改时间  修改人 修改的概要说明
  * @Copyright: 2019
  */
-object StringUtil {
+object KotlinStringUtil {
 
     fun isEmpty(str: String?): Boolean {
         if (str == null || str == "")

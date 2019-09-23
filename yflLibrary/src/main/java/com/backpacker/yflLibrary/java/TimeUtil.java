@@ -23,7 +23,7 @@ public class TimeUtil {
      * @return
      */
     public static String getStringTimeStamp(String date) {
-        if (StringUtil.isEmpty(date)) {
+        if (JavaStringUtil.isEmpty(date)) {
             return "";
         }
         String commonDateStr = TimeUtil.getCommonDateStr(date);
@@ -58,7 +58,7 @@ public class TimeUtil {
      * @return
      */
     public static String getCommonDateStr(String datestr) {
-        if (StringUtil.isEmpty(datestr) || datestr.length() <= 19)
+        if (JavaStringUtil.isEmpty(datestr) || datestr.length() <= 19)
             return datestr;
         String tmpStr = datestr.substring(0, 19);
         Date date = strToDate(tmpStr, null);
@@ -92,7 +92,7 @@ public class TimeUtil {
      * @param def 默认时间，如果转换失败则返回默认时间
      */
     public static Date strToDate(String str, String formatstr, Date def) {
-        if (StringUtil.isEmpty(str))
+        if (JavaStringUtil.isEmpty(str))
             return def;
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(formatstr);
@@ -127,7 +127,7 @@ public class TimeUtil {
     //截取年月日
     public static String getYMDT(String str) {
         String time = "";
-        if (!StringUtil.isEmpty(str)) {
+        if (!JavaStringUtil.isEmpty(str)) {
             int x = str.indexOf(" ");
             if (x == -1)
                 return str;
@@ -141,7 +141,7 @@ public class TimeUtil {
      * @return
      */
     public static long getTimeWString(String time) {
-        if (StringUtil.isEmpty(time)) {
+        if (JavaStringUtil.isEmpty(time)) {
             return 0;
         }
         Date date = strToDate(time, null);

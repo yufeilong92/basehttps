@@ -1,11 +1,10 @@
 package com.yfl.base.db
 
-
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import com.backpacker.yflLibrary.kotlin.DbQueryUtil
-import com.backpacker.yflLibrary.kotlin.StringUtil
+import com.backpacker.yflLibrary.kotlin.KotlinStringUtil
 import com.yfl.base.db.vo.UserDbVo
 import com.tencent.wcdb.database.SQLiteDatabase
 import java.lang.Exception
@@ -88,7 +87,7 @@ object UserDbHelp {
     fun upHearInfom(hear: String?){
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom==null||StringUtil.isEmpty(userInfom.token)){
+        if (userInfom==null|| KotlinStringUtil.isEmpty(userInfom.token)){
             return
         }
         mSqLiteDatabase!!.beginTransaction()
@@ -114,7 +113,7 @@ object UserDbHelp {
     ) {
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.token)) {
+        if (userInfom == null || KotlinStringUtil.isEmpty(userInfom.token)) {
             return
         }
         mSqLiteDatabase!!.beginTransaction()
@@ -148,7 +147,7 @@ object UserDbHelp {
     fun upReal(str: String, name: String?, phone: String?, number: String?, portrait: String?) {
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.token)) {
+        if (userInfom == null || KotlinStringUtil.isEmpty(userInfom.token)) {
             return
         }
         mSqLiteDatabase!!.beginTransaction()
@@ -182,7 +181,7 @@ object UserDbHelp {
     fun upDriver(str: String, role: String) {
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.token)) {
+        if (userInfom == null || KotlinStringUtil.isEmpty(userInfom.token)) {
             return
         }
         mSqLiteDatabase!!.beginTransaction()
@@ -208,7 +207,7 @@ object UserDbHelp {
     fun upCar(str: String, plateNumber: String, carPlateColourId: String) {
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.token)) {
+        if (userInfom == null || KotlinStringUtil.isEmpty(userInfom.token)) {
             return
         }
         mSqLiteDatabase!!.beginTransaction()
@@ -261,7 +260,7 @@ object UserDbHelp {
         val content = ContentValues()
         content.put("guider", look)
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.userId))
+        if (userInfom == null || KotlinStringUtil.isEmpty(userInfom.userId))
             mSqLiteDatabase!!.insert(GmDBHelp.TABLE_NAME, null, content)
         else {
             mSqLiteDatabase!!.update(
@@ -278,57 +277,57 @@ object UserDbHelp {
 
     private fun copyVo(old: UserDbVo, new: UserDbVo): ContentValues {
         val values: ContentValues = ContentValues()
-        if (StringUtil.isEmpty(new.token)) {
+        if (KotlinStringUtil.isEmpty(new.token)) {
             values.put("token", old.token)
         } else {
             values.put("token", new.token)
         }
-        if (StringUtil.isEmpty(new.userId)) {
+        if (KotlinStringUtil.isEmpty(new.userId)) {
             values.put("userId", old.userId)
         } else {
             values.put("userId", new.userId)
         }
-        if (StringUtil.isEmpty(new.phone)) {
+        if (KotlinStringUtil.isEmpty(new.phone)) {
             values.put("phone", old.phone)
         } else {
             values.put("phone", new.phone)
         }
-        if (StringUtil.isEmpty(new.ifReal)) {
+        if (KotlinStringUtil.isEmpty(new.ifReal)) {
             values.put("ifReal", old.ifReal)
         } else {
             values.put("ifReal", new.ifReal)
         }
-        if (StringUtil.isEmpty(new.ifDriver)) {
+        if (KotlinStringUtil.isEmpty(new.ifDriver)) {
             values.put("ifDriver", old.ifDriver)
         } else {
             values.put("ifDriver", new.ifDriver)
         }
-        if (StringUtil.isEmpty(new.ifCar)) {
+        if (KotlinStringUtil.isEmpty(new.ifCar)) {
             values.put("ifCar", old.ifCar)
         } else {
             values.put("ifCar", new.token)
         }
-        if (StringUtil.isEmpty(new.extend)) {
+        if (KotlinStringUtil.isEmpty(new.extend)) {
             values.put("extend", old.extend)
         } else {
             values.put("extend", new.extend)
         }
-        if (StringUtil.isEmpty(new.extend_one)) {
+        if (KotlinStringUtil.isEmpty(new.extend_one)) {
             values.put("extend_one", old.extend_one)
         } else {
             values.put("extend_one", new.extend_one)
         }
-        if (StringUtil.isEmpty(new.extend_two)) {
+        if (KotlinStringUtil.isEmpty(new.extend_two)) {
             values.put("extend_two", old.extend_two)
         } else {
             values.put("extend_two", new.extend_two)
         }
-        if (StringUtil.isEmpty(new.extend_three)) {
+        if (KotlinStringUtil.isEmpty(new.extend_three)) {
             values.put("extend_three", old.extend_three)
         } else {
             values.put("extend_three", new.extend_three)
         }
-        if (StringUtil.isEmpty(new.extend_four)) {
+        if (KotlinStringUtil.isEmpty(new.extend_four)) {
             values.put("extend_four", old.extend_four)
         } else {
             values.put("extend_four", new.extend_four)

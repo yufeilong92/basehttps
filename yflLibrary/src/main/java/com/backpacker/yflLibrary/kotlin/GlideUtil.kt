@@ -2,7 +2,7 @@ package com.zzzh.akhalteke.utils
 
 import android.content.Context
 import android.widget.ImageView
-import com.backpacker.yflLibrary.kotlin.StringUtil
+import com.backpacker.yflLibrary.kotlin.KotlinStringUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -23,7 +23,7 @@ object GlideUtil {
      */
     fun LoadImager(context: Context, img: ImageView, path: String) {
 //        img.scaleType=ImageView.ScaleType.FIT_XY
-        if (StringUtil.isEmpty(path)){
+        if (KotlinStringUtil.isEmpty(path)){
             img.setImageResource(R.mipmap.ic_default_picture)
             return
         }
@@ -36,7 +36,7 @@ object GlideUtil {
      */
     fun LoadImagerWithOutHttp(context: Context, img: ImageView, path: String) {
 //        img.scaleType=ImageView.ScaleType.FIT_XY
-        if (StringUtil.isEmpty(path)){
+        if (KotlinStringUtil.isEmpty(path)){
             img.setImageResource(R.mipmap.ic_default_picture)
             return
         }
@@ -50,7 +50,7 @@ object GlideUtil {
      */
     fun loadQuadRangleImager(context: Context, img: ImageView, path: String) {
 //        img.scaleType=ImageView.ScaleType.FIT_XY
-        if (StringUtil.isEmpty(path)){
+        if (KotlinStringUtil.isEmpty(path)){
             img.setImageResource(R.mipmap.ic_default_picture)
             return
         }
@@ -80,7 +80,7 @@ object GlideUtil {
      */
     fun loadCilcleImager(context: Context, img: ImageView, path: String) {
 //        img.scaleType=ImageView.ScaleType.FIT_XY
-        if (StringUtil.isEmpty(path)){
+        if (KotlinStringUtil.isEmpty(path)){
             img.setImageResource(R.mipmap.ic_default_picture)
             return
         }
@@ -98,7 +98,7 @@ object GlideUtil {
      */
     fun LoadBImager(context: Context, img: ImageView, path: String) {
 //        img.scaleType=ImageView.ScaleType.FIT_XY
-        if (StringUtil.isEmpty(path)){
+        if (KotlinStringUtil.isEmpty(path)){
             img.setImageResource(R.mipmap.ic_default_picture)
             return
         }
@@ -111,7 +111,7 @@ object GlideUtil {
      */
     fun LoadBImagerWithOutHttp(context: Context, img: ImageView, path: String) {
 //        img.scaleType=ImageView.ScaleType.FIT_XY
-        if (StringUtil.isEmpty(path)){
+        if (KotlinStringUtil.isEmpty(path)){
             img.setImageResource(R.mipmap.ic_default_picture)
             return
         }
@@ -125,7 +125,7 @@ object GlideUtil {
      */
     fun loadBQuadRangleImager(context: Context, img: ImageView, path: String) {
 //        img.scaleType=ImageView.ScaleType.FIT_XY
-        if (StringUtil.isEmpty(path)){
+        if (KotlinStringUtil.isEmpty(path)){
             img.setImageResource(R.mipmap.ic_default_picture)
             return
         }
@@ -155,7 +155,7 @@ object GlideUtil {
      */
     fun loadBCilcleImager(context: Context, img: ImageView, path: String) {
 //        img.scaleType=ImageView.ScaleType.FIT_XY
-        if (StringUtil.isEmpty(path)){
+        if (KotlinStringUtil.isEmpty(path)){
             img.setImageResource(R.mipmap.ic_default_picture)
             return
         }
