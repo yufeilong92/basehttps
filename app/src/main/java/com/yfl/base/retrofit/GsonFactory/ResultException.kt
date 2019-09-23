@@ -1,4 +1,4 @@
-package com.backpacker.yflLibrary.net.GsonFactory
+package com.yfl.base.retrofit.GsonFactory
 
 import java.io.IOException
 

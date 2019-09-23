@@ -2,8 +2,7 @@ package com.yfl.base.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.backpacker.yflLibrary.kotlin.T
-import com.backpacker.yflLibrary.net.GsonFactory.ResultException
+import com.yfl.base.retrofit.GsonFactory.ResultException
 
 import java.lang.Exception
 import java.net.ConnectException

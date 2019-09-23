@@ -58,7 +58,7 @@ object PhoneUtil {
      */
     fun isAdCode(num: String): Boolean {
         return (!TextUtils.isEmpty(num) && num.matches("[0]{1}[0-9]{2,3}".toRegex())
-                && !Util.isRepeatedStr(num))
+                && !KotlinUtil.isRepeatedStr(num))
     }
 
     /**
@@ -69,6 +69,6 @@ object PhoneUtil {
      */
     fun isPhoneHome(num: String): Boolean {
         return (!TextUtils.isEmpty(num) && num.matches("[0-9]{7,8}".toRegex())
-                && !Util.isRepeatedStr(num))
+                && !KotlinUtil.isRepeatedStr(num))
     }
 }

@@ -9,10 +9,9 @@ import com.backpacker.yflLibrary.java.UriToFile
 import com.backpacker.yflLibrary.kotlin.ImagerUtil
 import com.backpacker.yflLibrary.kotlin.PermissionUtils
 import com.backpacker.yflLibrary.kotlin.TakePhotoUtils
-import com.backpacker.yflLibrary.kotlin.Util
+import com.backpacker.yflLibrary.kotlin.KotlinUtil
 import com.backpacker.yflLibrary.view.SelectCammerDialog
 import com.yanzhenjie.permission.Permission
-import com.yfl.base.base.BaseActivity
 import me.nereo.multi_image_selector.MultiImageSelector
 import top.zibin.luban.Luban
 import top.zibin.luban.OnCompressListener
@@ -81,12 +80,12 @@ abstract class BaseSelectImageActivity : BaseActivity() {
     }
 
     fun toShowDialog() {
-        Util.showDialog(selectImageDialog)
+        KotlinUtil.showDialog(selectImageDialog)
     }
 
     fun toShowDialog(num: Int) {
         temp = num
-        Util.showDialog(selectImageDialog)
+        KotlinUtil.showDialog(selectImageDialog)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

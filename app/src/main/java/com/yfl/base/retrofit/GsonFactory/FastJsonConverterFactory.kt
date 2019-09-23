@@ -1,4 +1,4 @@
-package com.backpacker.yflLibrary.net.GsonFactory
+package com.yfl.base.retrofit.GsonFactory
 
 import retrofit2.Converter
 import retrofit2.Retrofit

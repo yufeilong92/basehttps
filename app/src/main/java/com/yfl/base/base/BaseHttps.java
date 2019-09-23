@@ -2,7 +2,7 @@ package com.yfl.base.base;
 
 import android.widget.Toast;
 import com.backpacker.yflLibrary.kotlin.NetWork;
-import com.backpacker.yflLibrary.net.ResultException;
+import com.yfl.base.retrofit.net.ResultException;
 import com.trello.rxlifecycle2.components.RxActivity;
 import io.reactivex.*;
 import io.reactivex.android.schedulers.AndroidSchedulers;

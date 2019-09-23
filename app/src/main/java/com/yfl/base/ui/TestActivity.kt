@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.acker.simplezxing.activity.CaptureActivity
 import com.backpacker.yflLibrary.kotlin.LogUtil
 import com.backpacker.yflLibrary.kotlin.PermissionUtils
-import com.backpacker.yflLibrary.kotlin.Util
+import com.backpacker.yflLibrary.kotlin.KotlinUtil
 import com.yfl.base.base.BaseActivity
 import com.yfl.base.mvp.Contrat.MainView
 import com.yfl.base.mvp.Model.MainModel
@@ -54,7 +54,7 @@ class TestActivity : BaseActivity(), MainView.View {
 
     fun initView() {
         btn_one.setOnClickListener {
-            if (Util.handleOnDoubleClick()) {
+            if (KotlinUtil.handleOnDoubleClick()) {
                 return@setOnClickListener
             }
             PermissionUtils.showPermission(mContext, "", arrayOf(Permission.CAMERA)) {
@@ -62,7 +62,7 @@ class TestActivity : BaseActivity(), MainView.View {
             }
         }
         btn_two.setOnClickListener {
-            if (Util.handleOnDoubleClick()) {
+            if (KotlinUtil.handleOnDoubleClick()) {
                 return@setOnClickListener
             }
             mResultTo.toSelectCammer()

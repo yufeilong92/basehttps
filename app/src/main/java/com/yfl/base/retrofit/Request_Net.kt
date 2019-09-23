@@ -1,8 +1,8 @@
 package com.yfl.base.retrofit
 
 import android.util.Log
-import com.backpacker.yflLibrary.net.BaseServiceUtil
-import com.backpacker.yflLibrary.net.CommonInterceptor
+import com.yfl.base.retrofit.net.BaseServiceUtil
+import com.yfl.base.retrofit.net.CommonInterceptor
 import com.yfl.base.base.BaseHttp
 import com.yfl.base.base.DataMessageVo
 import com.yfl.base.vo.Login

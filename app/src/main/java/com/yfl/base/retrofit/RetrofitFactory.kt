@@ -3,8 +3,8 @@ package com.yfl.base.retrofit
 import android.content.Context
 import com.backpacker.yflLibrary.kotlin.NetWork
 import com.backpacker.yflLibrary.kotlin.T
-import com.backpacker.yflLibrary.net.CommonInterceptor
-import com.backpacker.yflLibrary.net.GsonFactory.GsonDConverterFactory
+import com.yfl.base.retrofit.net.CommonInterceptor
+import com.yfl.base.retrofit.GsonFactory.GsonDConverterFactory
 import com.yfl.base.base.DataMessageVo
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson

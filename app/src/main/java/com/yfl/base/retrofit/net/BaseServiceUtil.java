@@ -1,7 +1,7 @@
-package com.backpacker.yflLibrary.net;
+package com.yfl.base.retrofit.net;
 
 import android.text.TextUtils;
-import com.backpacker.yflLibrary.net.GsonFactory.GsonDConverterFactory;
+import com.yfl.base.retrofit.GsonFactory.GsonDConverterFactory;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

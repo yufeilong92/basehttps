@@ -1,4 +1,4 @@
-package com.backpacker.yflLibrary.net;
+package com.yfl.base.retrofit.net;
 
 import okhttp3.ResponseBody;
 import retrofit2.Converter;

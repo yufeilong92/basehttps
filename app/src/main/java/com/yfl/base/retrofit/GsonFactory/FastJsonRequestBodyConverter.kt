@@ -1,4 +1,4 @@
-package com.backpacker.yflLibrary.net.GsonFactory
+package com.yfl.base.retrofit.GsonFactory
 import com.alibaba.fastjson.JSON
 import okhttp3.RequestBody
 import retrofit2.Converter

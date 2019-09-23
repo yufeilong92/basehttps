@@ -4,7 +4,6 @@ import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.backpacker.yflLibrary.kotlin.Util;
 
 public class EditTextUtil {
     public interface SearchInterface {
@@ -17,7 +16,7 @@ public class EditTextUtil {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     if (anInterface != null) {
-                        String com = StringUtil.getObjectToStr(et);
+                        String com = JavaStringUtil.getObjectToStr(et);
                         anInterface.searchOnClick(com);
                     }
                     return true;
@@ -32,7 +31,7 @@ public class EditTextUtil {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     if (anInterface != null) {
-                        String com = StringUtil.getObjectToStr(et);
+                        String com = JavaStringUtil.getObjectToStr(et);
                         anInterface.searchOnClick(com);
                     }
                     return true;
@@ -47,7 +46,7 @@ public class EditTextUtil {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEND) {
                     if (anInterface != null) {
-                        String com = StringUtil.getObjectToStr(et);
+                        String com = JavaStringUtil.getObjectToStr(et);
                         anInterface.searchOnClick(com);
                     }
                     return true;
@@ -62,7 +61,7 @@ public class EditTextUtil {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_GO) {
                     if (anInterface != null) {
-                        String com = StringUtil.getObjectToStr(et);
+                        String com = JavaStringUtil.getObjectToStr(et);
                         anInterface.searchOnClick(com);
                     }
                     return true;

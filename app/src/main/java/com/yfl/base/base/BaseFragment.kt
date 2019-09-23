@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.backpacker.yflLibrary.kotlin.PermissionUtils
 import com.backpacker.yflLibrary.kotlin.T
-import com.backpacker.yflLibrary.kotlin.Util
-import com.backpacker.yflLibrary.net.HttpBaseResult
+import com.backpacker.yflLibrary.kotlin.KotlinUtil
+import com.yfl.base.retrofit.net.HttpBaseResult
 import com.backpacker.yflLibrary.view.MyProgreeDialog
 import com.yfl.base.manage.ResultFragmentTo
 
@@ -48,11 +48,11 @@ abstract class BaseFragment : Fragment() {
 
 
     fun showProgress() {
-        Util.showDialog(progressDialog)
+        KotlinUtil.showDialog(progressDialog)
     }
 
     fun dismissProgress() {
-        Util.dismissDialog(progressDialog)
+        KotlinUtil.dismissDialog(progressDialog)
     }
 
     fun onError(ex: Throwable) {

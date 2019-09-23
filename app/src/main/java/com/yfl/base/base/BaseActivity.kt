@@ -7,8 +7,8 @@ import com.backpacker.yflLibrary.base.StartActivityManger
 import com.backpacker.yflLibrary.kotlin.AppManager
 import com.backpacker.yflLibrary.kotlin.PermissionUtils
 import com.backpacker.yflLibrary.kotlin.T
-import com.backpacker.yflLibrary.kotlin.Util
-import com.backpacker.yflLibrary.net.HttpBaseResult
+import com.backpacker.yflLibrary.kotlin.KotlinUtil
+import com.yfl.base.retrofit.net.HttpBaseResult
 import com.backpacker.yflLibrary.view.MyProgreeDialog
 import com.yfl.base.manage.ResultActivityTo
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
@@ -62,11 +62,11 @@ abstract class BaseActivity : RxAppCompatActivity() {
     }
 
     fun showProgress() {
-        Util.showDialog(progressDialog)
+        KotlinUtil.showDialog(progressDialog)
     }
 
     fun dismissProgress() {
-        Util.dismissDialog(progressDialog)
+        KotlinUtil.dismissDialog(progressDialog)
     }
 
     fun onError(ex: Throwable) {

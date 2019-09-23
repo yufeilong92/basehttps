@@ -2,7 +2,7 @@ package com.yfl.base.base
 
 import android.widget.Toast
 import com.backpacker.yflLibrary.kotlin.NetWork
-import com.backpacker.yflLibrary.net.GsonFactory.ResultException
+import com.yfl.base.retrofit.GsonFactory.ResultException
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter

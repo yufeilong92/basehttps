@@ -1,8 +1,8 @@
-package com.backpacker.yflLibrary.net
+package com.yfl.base.retrofit.net
 
 import android.content.Context
 import com.backpacker.yflLibrary.kotlin.T
-import com.backpacker.yflLibrary.net.GsonFactory.ResultException
+import com.yfl.base.retrofit.GsonFactory.ResultException
 import java.io.IOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
