@@ -18,7 +18,7 @@ import com.vector.update_app.UpdateAppBean
 import com.vector.update_app.utils.AppUpdateUtils
 import com.vector.update_app_kotlin.check
 import com.vector.update_app_kotlin.updateApp
-import com.yanzhenjie.permission.Permission
+import com.yanzhenjie.permission.runtime.Permission
 import com.yfl.base.R
 import com.yfl.base.updatenet.updateapp.UpdateAppHttpUtil
 import com.yfl.base.updatenet.util.CProgressDialogUtils

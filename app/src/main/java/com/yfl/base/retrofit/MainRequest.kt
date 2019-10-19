@@ -2,9 +2,8 @@ package com.yfl.base.retrofit
 
 import com.backpacker.yflLibrary.kotlin.BaseEntity
 import io.reactivex.Observable
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 /**
  * @Author : YFL  is Creating a porject in tsyc
@@ -57,5 +56,20 @@ interface MainRequest {
     @FormUrlEncoded
     @POST("api/Member/index")
     fun reqeustMeData():Observable<BaseEntity<String>>
+
+    //单文件上传
+    @Multipart
+    @POST("/api/v1/open/upload") //上传
+    fun uploadImage(
+        @Part partList: MutableList<MultipartBody.Part>
+    ): Observable<BaseEntity<Any>>
+
+    //多文件上传
+    @Multipart
+    @POST("/api/v1/open/uploads") //上传
+    fun uploadImages(
+        @Part partList: MutableList<MultipartBody.Part>
+    ): Observable<BaseEntity<MutableList<Any>>>
+
 
 }

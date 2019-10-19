@@ -1,7 +1,7 @@
 package com.yfl.base.mvp.Presenter
 
 import com.yfl.base.mvp.Contrat.MainView
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 import com.yfl.base.mvp.ResultView.RequestResultInterface
 
 /**

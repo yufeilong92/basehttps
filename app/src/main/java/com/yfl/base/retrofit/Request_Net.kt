@@ -1,12 +1,13 @@
 package com.yfl.base.retrofit
 
+import android.annotation.SuppressLint
 import android.util.Log
 import com.yfl.base.retrofit.net.BaseServiceUtil
 import com.yfl.base.retrofit.net.CommonInterceptor
 import com.yfl.base.base.BaseHttp
 import com.yfl.base.base.DataMessageVo
 import com.yfl.base.vo.Login
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
@@ -14,13 +15,17 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import okhttp3.MediaType
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 /**
@@ -145,8 +150,49 @@ object Request_Net : BaseHttp() {
         })
 
     }
-
-
-
+//  上传单张图片
+ /*   @SuppressLint("CheckResult")
+    fun upDataHearImger(mContext: RxAppCompatActivity, path: String) {
+        if (RetrofitFactory.judgmentNetWork(mContext)) {
+            isShowProgress.value = 0
+            val file = File(path)
+            val builder = MultipartBody.Builder()
+            val imageBody = RequestBody.create(MediaType.parse("image/png"), file)
+            builder.addFormDataPart("  file", file.name, imageBody) //imgfile 后台接收图片流的参数名
+            val parts = builder.build().parts()
+            RetrofitFactory.createMainRetrofit().uploadImage(parts)
+                .subscribeOn(Schedulers.io())
+                .compose(mContext.bindToLifecycle())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    imgHear.value = it.data
+                }, this::error, this::complate)
+        }
+    }*/
+    //  上传多张图片
+  /*  @SuppressLint("CheckResult")
+    fun upDataImgs(mContext: RxAppCompatActivity, paths: MutableList<String>) {
+        if (RetrofitFactory.judgmentNetWork(mContext)) {
+            isShowProgress.value = 0
+            val builder = MultipartBody.Builder()
+            for (item in paths) {
+                val file = File(item)
+                val imageBody = RequestBody.create(MediaType.parse("image/png"), file)
+                builder.addFormDataPart(
+                    "multipartFiles",
+                    file.name,
+                    imageBody
+                ) //imgfile 后台接收图片流的参数名
+            }
+            val parts = builder.build().parts()
+            RetrofitFactory.createMainRetrofit().uploadImages(parts)
+                .subscribeOn(Schedulers.io())
+                .compose(mContext.bindToLifecycle())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                }, this::error, this::complate)
+        }
+    }
+*/
 
 }

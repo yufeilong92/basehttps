@@ -46,6 +46,7 @@ ext {
     appUpdataVersion = "3.5.2"
     okhttputilsVersion = "3.8.0"
     permissionVersion = "2.0.3"
+//    permissionVersion = "2.0.0-rc11"
 //    rxlifecycleVersion="0.6.1"
 ////    rxlifecyclecomponentsVersion="0.6.1"
     rxlifecycleVersion = "3.0.0"

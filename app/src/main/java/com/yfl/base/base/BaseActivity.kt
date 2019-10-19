@@ -11,7 +11,7 @@ import com.backpacker.yflLibrary.kotlin.KotlinUtil
 import com.yfl.base.retrofit.net.HttpBaseResult
 import com.backpacker.yflLibrary.view.MyProgreeDialog
 import com.yfl.base.manage.ResultActivityTo
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 import kotlinx.android.synthetic.main.gm_title_layout.*
 
 

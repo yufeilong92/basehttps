@@ -2,7 +2,7 @@ package com.yfl.base.mvp.Model
 
 import com.yfl.base.mvp.Contrat.MainView
 import com.yfl.base.retrofit.Request_Net
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 import com.yfl.base.mvp.ResultView.RequestResultInterface
 
 /**

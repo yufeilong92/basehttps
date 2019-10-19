@@ -2,9 +2,12 @@ package com.yfl.base.retrofit.net;
 
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
+
 import okhttp3.*;
 import okio.Buffer;
+
 import org.json.JSONObject;
 
 import java.io.*;
@@ -95,7 +98,6 @@ public class CommonInterceptor implements Interceptor {
 
     private void hearParamers(Request newRequest) {
         StringBuffer buffer = new StringBuffer();
-        RequestBody body = newRequest.body();
         if (newRequest.body() instanceof FormBody) {
             FormBody frombody = (FormBody) newRequest.body();
             buffer.append(newRequest.url().toString() + "\n");
@@ -243,20 +245,24 @@ public class CommonInterceptor implements Interceptor {
                  * jsonObject.put("sign", sign);
                  */
                 newRequestBody = RequestBody.create(originalRequestBody.contentType(), jsonObject.toString());
-                Log.i("拦截数据===", getParamContent(newRequestBody));
+                Log.i("拦截请求数据===request：", getParamContent(newRequestBody));
 
             } catch (Exception e) {
                 newRequestBody = originalRequestBody;
+                try {
+                    Log.i("拦截请求数据===request：", getParamContent(newRequestBody));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 e.printStackTrace();
             }
         }
 //        可根据需求添加或修改header,此处制作示意
-//       return request.newBuilder()
-//                .addHeader("header1", "header1")
-//                .addHeader("header2", "header2")
-//                .method(request.method(), newRequestBody)
-//                .build();
-        return request.newBuilder().method(request.method(), newRequestBody).build();
+        return request.newBuilder()
+                .method(request.method(), newRequestBody)
+                .build();
+
+//        return request.newBuilder().method(request.method(), newRequestBody).build();
     }
 
     /**
@@ -284,7 +290,10 @@ public class CommonInterceptor implements Interceptor {
         for (String commonParamKey : commonParams.keySet()) {
             sb.append("&").append(commonParamKey).append("=").append(commonParams.get(commonParamKey));
         }
+
         Request.Builder requestBuilder = request.newBuilder();
+        Log.i("拦截请求数据===request：", "" + requestBuilder.build().toString());
         return requestBuilder.url(sb.toString()).build();
     }
+
 }

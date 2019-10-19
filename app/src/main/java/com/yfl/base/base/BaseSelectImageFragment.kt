@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.backpacker.yflLibrary.java.UriToFile
 import com.backpacker.yflLibrary.kotlin.ImagerUtil
 import com.backpacker.yflLibrary.kotlin.PermissionUtils
@@ -25,30 +26,32 @@ import java.io.IOException
  * @Time :2019/7/5 10:01
  * @Purpose :图片选择基类
  */
-abstract class BaseSelectImageActivity : BaseActivity() {
+abstract class BaseSelectImageFragment : BaseFragment() {
     private val REQUEST_IMAGE_BACK = 1002//从相册选择
     private val PHOTO_PIC_CODE = 1001// 拍照
     lateinit var selectImageDialog: SelectCammerDialog
     private var temp = 1
     private var imagePaths: ArrayList<String> = arrayListOf()
     private var mCompressPaths: ArrayList<String> = arrayListOf()
-    override fun onInitCreateView(savedInstanceState: Bundle?) {
-        selectImageDialog = object : SelectCammerDialog(mContext) {
+    override fun setInitCreatedContentView(view: View, savedInstanceState: Bundle?) {
+        selectImageDialog = object : SelectCammerDialog(activity!!) {
             override fun onFromPhoto() {
-                PermissionUtils.showPermission(
-                    this@BaseSelectImageActivity, "需要照相和读写权限，是否同意", arrayOf(
-                        Permission.CAMERA,
-                        Permission.WRITE_EXTERNAL_STORAGE,
-                        Permission.READ_EXTERNAL_STORAGE
-                    )
-                ) {
-                    toSelectPhoto()
+                activity?.let {
+                    PermissionUtils.showPermission(
+                        it, "需要照相和读写权限，是否同意", arrayOf(
+                            Permission.CAMERA,
+                            Permission.WRITE_EXTERNAL_STORAGE,
+                            Permission.READ_EXTERNAL_STORAGE
+                        )
+                    ) {
+                        toSelectPhoto()
+                    }
                 }
             }
 
             override fun onTakePrice() {
                 PermissionUtils.showPermission(
-                    this@BaseSelectImageActivity, "需要照相和读写权限，是否同意", arrayOf(
+                    activity!!, "需要照相和读写权限，是否同意", arrayOf(
                         Permission.CAMERA,
                         Permission.WRITE_EXTERNAL_STORAGE,
                         Permission.READ_EXTERNAL_STORAGE
@@ -64,7 +67,7 @@ abstract class BaseSelectImageActivity : BaseActivity() {
     private var takePhoneUri: Uri? = null
     private fun toPicture() {
         try {
-            takePhoneUri = TakePhotoUtils.takePhoto(mContext, PHOTO_PIC_CODE)
+            takePhoneUri = TakePhotoUtils.takePhoto(activity!!, PHOTO_PIC_CODE)
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -94,7 +97,7 @@ abstract class BaseSelectImageActivity : BaseActivity() {
             PHOTO_PIC_CODE -> {//拍照
                 if (resultCode == Activity.RESULT_OK) {
                     if (takePhoneUri != null) {
-                        val filePath = UriToFile.getFilePathFromURI(mContext, takePhoneUri!!)
+                        val filePath = UriToFile.getFilePathFromURI(activity!!, takePhoneUri!!)
                         imagePaths.add(filePath)
                         lunBanCompress(imagePaths)
                     }
@@ -103,7 +106,8 @@ abstract class BaseSelectImageActivity : BaseActivity() {
             REQUEST_IMAGE_BACK -> {//相册
                 if (data == null) return
                 imagePaths.clear()
-                val paths: MutableList<String> = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT)
+                val paths: MutableList<String> =
+                    data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT)
                 imagePaths.addAll(paths)
                 lunBanCompress(imagePaths)
             }
@@ -115,10 +119,10 @@ abstract class BaseSelectImageActivity : BaseActivity() {
     fun lunBanCompress(path: MutableList<String>) {
         mCompressPaths.clear()
         var index = 0
-        Luban.with(mContext)
+        Luban.with(activity)
             .load(path) // 传人要压缩的图片列表
             .ignoreBy(100)// 忽略不压缩图片的大小
-            .setTargetDir(ImagerUtil.getDefaultPath(mContext))
+            .setTargetDir(ImagerUtil.getDefaultPath(activity!!))
             .setCompressListener(object : OnCompressListener {
                 override fun onSuccess(file: File?) {
                     ++index
@@ -130,7 +134,7 @@ abstract class BaseSelectImageActivity : BaseActivity() {
                 }
 
                 override fun onError(e: Throwable?) {
-                    mContext.onError(e!!)
+                    this!!.onError(e!!)
                     Log.i("鲁班压缩===", "压缩异常")
                 }
 

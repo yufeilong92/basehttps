@@ -4,6 +4,7 @@ import android.widget.Toast
 import com.backpacker.yflLibrary.kotlin.NetWork
 import com.yfl.base.retrofit.GsonFactory.ResultException
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
