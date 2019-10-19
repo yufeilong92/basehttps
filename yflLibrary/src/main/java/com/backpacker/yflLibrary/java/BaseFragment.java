@@ -5,7 +5,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     private static final String TAG = BaseFragment.class.getSimpleName();
 
@@ -13,12 +13,12 @@ public class BaseFragment extends Fragment {
     private boolean isReuseView = true ;//是否进行复用，默认复用
     private boolean isFragmentVisible;
     private View rootView;
-
     //setUserVisibleHint()在Fragment创建时会先被调用一次，传入isVisibleToUser = false
     //如果当前Fragment可见，那么setUserVisibleHint()会再次被调用一次，传入isVisibleToUser = true
     //如果Fragment从可见->不可见，那么setUserVisibleHint()也会被调用，传入isVisibleToUser = false
     //总结：setUserVisibleHint()除了Fragment的可见状态发生变化时会被回调外，在new Fragment()时也会被回调
     //如果我们需要在 Fragment 可见与不可见时干点事，用这个的话就会有多余的回调了，那么就需要重新封装一个
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);

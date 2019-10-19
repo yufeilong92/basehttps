@@ -1,6 +1,12 @@
 package com.backpacker.yflLibrary.kotlin
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.text.TextUtils
+import android.widget.EditText
+import android.widget.Toast
+import com.example.UtilsLibrary.R
 import java.util.regex.Pattern
 
 /**
@@ -26,6 +32,7 @@ object PhoneUtil {
         sb.replace(3, 7, str)
         return sb.toString()
     }
+
     /**
      * 判断是否为手机号码
      *
@@ -71,4 +78,30 @@ object PhoneUtil {
         return (!TextUtils.isEmpty(num) && num.matches("[0-9]{7,8}".toRegex())
                 && !KotlinUtil.isRepeatedStr(num))
     }
+
+    fun isPhoneRight(mContext: Context, et: EditText): Boolean {
+        val phone = KotlinStringUtil.getObjectToStr(et)
+        if (KotlinStringUtil.isEmpty(phone)) {
+            T.showToast(mContext, "请输入手机号码")
+            return false
+
+        }
+        if (!PhoneUtil.isPhoneNum(phone)) {
+            T.showToast(mContext, "请输入正确手机号码")
+            return false
+        }
+        return true
+    }
+
+    fun playPhone(m: Context, phone: String) {
+        if (KotlinStringUtil.isEmpty(phone)) {
+            Toast.makeText(m, "电话号码为空", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val intent = Intent(Intent.ACTION_DIAL)
+        val data = Uri.parse("tel:$phone");
+        intent.data = data;
+        m.startActivity(intent);
+    }
+
 }

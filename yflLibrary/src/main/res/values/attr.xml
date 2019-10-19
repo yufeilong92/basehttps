@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="MyBarStyle">
         <attr name="barBg" format="color" />
+        <attr name="bgDrawable" format="reference" />
     </declare-styleable>
     <declare-styleable name="FlowLayout">
         <attr name="flFlow" format="boolean"/>

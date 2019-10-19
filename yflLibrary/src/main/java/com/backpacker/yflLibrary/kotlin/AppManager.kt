@@ -65,10 +65,10 @@ class AppManager {
      * 结束当前Activity（堆栈中最后一个压入的）
      */
     fun finishActivity() {
-        var activity: Activity? = activityStack!!.lastElement()
-        if (activity != null) {
-            activity.finish()
-            activity = null
+        var activitys: Activity? = activityStack!!.lastElement()
+        if (activitys != null) {
+            activitys.finish()
+            activitys = null
         }
     }
 
@@ -76,11 +76,11 @@ class AppManager {
      * 结束指定的Activity
      */
     fun finishActivity(activity: Activity?) {
-        var activity = activity
-        if (activity != null) {
-            activityStack!!.remove(activity)
-            activity.finish()
-            activity = null
+        var activitys = activity
+        if (activitys != null) {
+            activityStack!!.remove(activitys)
+            activitys.finish()
+            activitys = null
         }
     }
 

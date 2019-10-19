@@ -103,4 +103,7 @@ public class FileUtil {
 
     }
 
+    public static String getFilePath(Context mContext) {
+        return mContext.getExternalCacheDir().getAbsolutePath() + File.separator + "/";
+    }
 }

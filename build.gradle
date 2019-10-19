@@ -8,7 +8,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:3.5.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -45,10 +45,10 @@ ext {
     androidWcdb = "1.0.2"
     appUpdataVersion = "3.5.2"
     okhttputilsVersion = "3.8.0"
-    permissionVersion = "2.0.0-rc11"
+    permissionVersion = "2.0.3"
 //    rxlifecycleVersion="0.6.1"
 ////    rxlifecyclecomponentsVersion="0.6.1"
-    rxlifecycleVersion = "2.2.2"
-    rxlifecyclecomponentsVersion = "2.2.1"
-    rxlifecycleAndroidVersion = "2.2.2"
+    rxlifecycleVersion = "3.0.0"
+    rxlifecyclecomponentsVersion = "3.0.0"
+    rxlifecycleAndroidVersion = "3.0.0"
 }

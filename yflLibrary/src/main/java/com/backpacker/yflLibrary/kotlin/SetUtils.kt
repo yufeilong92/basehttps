@@ -6,7 +6,6 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 
-
 /**
  * @Title:  tsyc
  * @Package com.backpacker.UtilsLibrary.kotlin

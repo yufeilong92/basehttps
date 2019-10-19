@@ -1,6 +1,7 @@
 package com.zzzh.akhalteke.utils
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.widget.ImageView
 import com.backpacker.yflLibrary.kotlin.KotlinStringUtil
 import com.bumptech.glide.Glide
@@ -94,6 +95,24 @@ object GlideUtil {
     }
 
     /**
+     * 加载圆角
+     */
+    fun loadHearCilcleImager(context: Context, img: ImageView, path: String) {
+        //        img.scaleType=ImageView.ScaleType.FIT_XY
+        if (KotlinStringUtil.isEmpty(path)){
+            img.setImageResource(R.mipmap.ic_logo)
+            return
+        }
+        val mRequestOptions = RequestOptions.circleCropTransform()
+            .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
+            .skipMemoryCache(true);//不做内存缓存
+        Glide.with(context)
+            .load(path)
+            .apply(mRequestOptions)
+            .into(img)
+    }
+
+    /**
      * 加载图片
      */
     fun LoadBImager(context: Context, img: ImageView, path: String) {
@@ -164,6 +183,21 @@ object GlideUtil {
             .skipMemoryCache(true);//不做内存缓存
         Glide.with(context)
             .load(File(path))
+            .apply(mRequestOptions)
+            .into(img)
+    }
+
+    /**
+     * 加载圆角
+     */
+    fun loadBCilcleImager(context: Context, img: ImageView, path: Int) {
+//        img.scaleType=ImageView.ScaleType.FIT_XY
+        val resource = BitmapFactory.decodeResource(context.resources, path)
+        val mRequestOptions = RequestOptions.circleCropTransform()
+            .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
+            .skipMemoryCache(true);//不做内存缓存
+        Glide.with(context)
+            .load(resource)
             .apply(mRequestOptions)
             .into(img)
     }

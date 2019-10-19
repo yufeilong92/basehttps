@@ -60,13 +60,18 @@ dependencies {
     implementation "com.tencent.wcdb:wcdb-android:$rootProject.ext.androidWcdb"
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glideVersion"
-    implementation "com.trello.rxlifecycle2:rxlifecycle:$rootProject.ext.permissionVersion"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-android:$rootProject.ext.rxlifecycleAndroidVersion"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-components:$rootProject.ext.rxlifecyclecomponentsVersion"
+    implementation 'com.trello.rxlifecycle3:rxlifecycle:3.0.0'
+    implementation 'com.trello.rxlifecycle3:rxlifecycle-android:3.0.0'
+    implementation 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
+    api 'android.arch.lifecycle:extensions:1.1.1'
     implementation project(path: ':simplezxing')
     implementation "com.yanzhenjie:permission:$rootProject.ext.permissionVersion"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
+    //对话框选择框
+    implementation 'com.github.addappcn:android-pickers:1.0.3'
+    //tablerlayout
+    implementation 'com.google.android.material:material:1.0.0'
     implementation project(path: ':update-app-kotlin')
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
     implementation 'com.tencent.bugly:crashreport:latest.release'
@@ -79,4 +84,5 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-10'
     implementation project(path: ':camera')
     implementation project(path: ':video-compressor')
+    implementation 'com.zzhoujay.richtext:richtext:2.5.1'
 }

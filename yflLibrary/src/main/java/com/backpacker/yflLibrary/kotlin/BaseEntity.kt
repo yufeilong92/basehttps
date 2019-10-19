@@ -14,10 +14,10 @@ class BaseEntity <E>(){
     @SerializedName("code")
     var code:String = ""
 
-    @SerializedName("message")
+    @SerializedName("msg")
     var message:String = ""
 
-    @SerializedName("result")
+    @SerializedName("data")
     var data:E? = null
 
 }

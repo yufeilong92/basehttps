@@ -4,16 +4,24 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import java.util.regex.Pattern
-import android.text.TextUtils
 import java.util.*
 import android.text.method.PasswordTransformationMethod
 import android.text.method.HideReturnsTransformationMethod
 import android.app.Activity
 import android.app.Dialog
+import android.graphics.Color
+import android.text.*
 import android.widget.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import android.text.InputType
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
+import android.webkit.WebSettings
+import android.webkit.WebView
+import com.backpacker.yflLibrary.java.LocaUtil.getExternalCacheDir
+import com.backpacker.yflLibrary.java.LocaUtil.isMethodsCompat
+import java.io.File
 
 
 /**
@@ -43,6 +51,14 @@ object KotlinUtil {
         if (imm != null) {
             imm!!.hideSoftInputFromWindow(view!!.getWindowToken(), 0)
         }
+    }
+    /**
+     * 隐藏键盘
+     *
+     * @param activity activity
+     */
+    fun hideInputMethod(activity: Activity) {
+        hideInputMethod(activity, activity.currentFocus)
     }
 
     /**
@@ -293,6 +309,20 @@ object KotlinUtil {
     }
 
 
+    private val MIN_CLICK_DELAY_TIME_ONE = 1000
+    private var lastClickTime_ONE: Long = 0
+    /***
+     * 处理多次点击问题
+     * @return
+     */
+    fun handleOnDoubleClick_ONE(): Boolean {
+        val l = System.currentTimeMillis()
+        if (l - lastClickTime_ONE > MIN_CLICK_DELAY_TIME_ONE) {
+            lastClickTime_ONE = l
+            return false
+        }
+        return true
+    }
     /**
      * 获取view 文字
      */
@@ -405,4 +435,45 @@ object KotlinUtil {
         })
     }
 
+    interface SpannableStringListener {
+        fun item();
+    }
+
+    fun spangStringLintener(
+        tv: TextView,
+        data: String,
+        start: Int,
+        end: Int,
+        listener: SpannableStringListener
+    ) {
+        val spannableString = SpannableString(data)
+        val clickableSpan = MyClickableSpan(listener)
+        spannableString.setSpan(
+            clickableSpan,
+            start,
+            end,
+            Spanned.SPAN_INCLUSIVE_EXCLUSIVE
+        )
+        val colorSpan = ForegroundColorSpan(Color.parseColor("#0099EE"))
+        spannableString.setSpan(
+            colorSpan, start,
+            end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE
+        );
+        tv.movementMethod = LinkMovementMethod.getInstance()
+        tv.text = spannableString
+
+    }
+    internal class MyClickableSpan(var listener: SpannableStringListener?) : ClickableSpan() {
+        override fun onClick(p0: View) {
+            if (listener != null) {
+                listener!!.item()
+            }
+        }
+
+        override fun updateDrawState(ds: TextPaint) {
+            ds.isUnderlineText = false
+        }
+
+
+    }
 }

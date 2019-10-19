@@ -16,6 +16,9 @@ open class StartFragmentManger(var mContext: FragmentActivity) {
     companion object{
         val CNT_PARAMETE_TITLE: String = "param_title"
     }
+     open fun getBundler(): Bundle {
+        return Bundle()
+    }
     fun jumpTo(clazz: Class<*>) {
         val intentB = Intent()
         intentB.setClass(mContext, clazz)

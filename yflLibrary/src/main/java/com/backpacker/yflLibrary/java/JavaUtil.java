@@ -23,4 +23,5 @@ public class JavaUtil {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return (int) ((dp * displayMetrics.density) + 0.5);
     }
+
 }

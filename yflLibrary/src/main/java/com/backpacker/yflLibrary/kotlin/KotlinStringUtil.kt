@@ -1,5 +1,13 @@
 package com.backpacker.yflLibrary.kotlin
 
+import android.content.Context
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+
+
+
 /**
  * @Title:  kotlin_androidone
  * @Package com.backpacker.UtilsLibrary
@@ -16,6 +24,26 @@ object KotlinStringUtil {
         if (str == null || str == "")
             return true
         return false
+    }
+
+    fun getObjectToStr(v: View): String {
+        if (v is TextView) {
+            val tv = v as TextView
+            return tv.text.toString().trim { it <= ' ' }
+        }
+        if (v is EditText) {
+            val et = v as EditText
+            return et.text.toString().trim { it <= ' ' }
+        }
+        if (v is Button) {
+            val btn = v as Button
+            return btn.getText().toString().trim()
+        }
+        return ""
+    }
+
+    fun getStringWid(m: Context, id: Int): String {
+        return m.getResources().getString(id)
     }
 
 }
