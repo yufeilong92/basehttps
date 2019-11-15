@@ -4,21 +4,19 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import java.util.regex.Pattern
+import android.text.TextUtils
 import java.util.*
 import android.text.method.PasswordTransformationMethod
 import android.text.method.HideReturnsTransformationMethod
 import android.app.Activity
 import android.app.Dialog
-import android.graphics.Color
-import android.text.*
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.res.Resources
 import android.widget.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.text.style.ForegroundColorSpan
-import android.webkit.WebSettings
-import android.webkit.WebView
+import android.text.InputType
 import com.backpacker.yflLibrary.java.LocaUtil.getExternalCacheDir
 import com.backpacker.yflLibrary.java.LocaUtil.isMethodsCompat
 import java.io.File
@@ -52,6 +50,7 @@ object KotlinUtil {
             imm!!.hideSoftInputFromWindow(view!!.getWindowToken(), 0)
         }
     }
+
     /**
      * 隐藏键盘
      *
@@ -92,9 +91,9 @@ object KotlinUtil {
         if (len <= 1) {
             return false
         } else {
-            val firstChar = str[0]// 第一个字长度
+            val firstChar = str[0] // 第一个字长度
             for (i in 1 until len) {
-                val nextChar = str[i]// 第i个字长度
+                val nextChar = str[i] // 第i个字长度
                 if (firstChar != nextChar) {
                     return false
                 }
@@ -113,7 +112,7 @@ object KotlinUtil {
             return false
         }
 
-        val p = Pattern.compile("^[0-9]+$")// 从开头到结尾必须全部为数�?
+        val p = Pattern.compile("^[0-9]+$") // 从开头到结尾必须全部为数�?
         val m = p.matcher(str)
 
         return m.find()
@@ -130,7 +129,7 @@ object KotlinUtil {
             return false
         }
 
-        val p = Pattern.compile("^[a-zA-Z]+$")// 从开头到结尾必须全部为字母或者数�?
+        val p = Pattern.compile("^[a-zA-Z]+$") // 从开头到结尾必须全部为字母或者数�?
         val m = p.matcher(str)
 
         return m.find()
@@ -146,7 +145,7 @@ object KotlinUtil {
         if (TextUtils.isEmpty(str)) {
             return false
         }
-        val p = Pattern.compile("^[a-zA-Z0-9]+$")// 从开头到结尾必须全部为字母或者数�?
+        val p = Pattern.compile("^[a-zA-Z0-9]+$") // 从开头到结尾必须全部为字母或者数�?
         val m = p.matcher(str)
 
         return m.find()
@@ -187,7 +186,7 @@ object KotlinUtil {
      * @return
      */
     fun getRandom8(): Long {
-        val str = StringBuilder()//定义变长字符串
+        val str = StringBuilder() //定义变长字符串
         val random = Random()
         //随机生成数字，并添加到字符串
         for (i in 0..7) {
@@ -323,6 +322,7 @@ object KotlinUtil {
         }
         return true
     }
+
     /**
      * 获取view 文字
      */
@@ -406,16 +406,18 @@ object KotlinUtil {
                     et.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
                 } else {
                     //默认状态显示密码--设置文本 要一起写才能起作用 InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD
-                    et.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                    et.inputType =
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 }
             }
 
         })
     }
+
     fun etShowOrHineTwo(et: EditText, chb: CheckBox) {
         chb.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
             override fun onCheckedChanged(p0: CompoundButton?, p1: Boolean) {
-                if(p1) {
+                if (p1) {
                     //选择状态 显示明文--设置为可见的密码
                     //mEtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     /**
@@ -435,45 +437,40 @@ object KotlinUtil {
         })
     }
 
-    interface SpannableStringListener {
-        fun item();
+    fun copyText(mContext: Context, com: String) {
+        val cm = mContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager;
+        // 将文本内容放到系统剪贴板里。
+        //        val newPlainText = ClipData.newPlainText("Label", com)
+        cm.setPrimaryClip(ClipData.newPlainText("Label", com));
+        T.showToast(mContext, "复制成功")
     }
 
-    fun spangStringLintener(
-        tv: TextView,
-        data: String,
-        start: Int,
-        end: Int,
-        listener: SpannableStringListener
-    ) {
-        val spannableString = SpannableString(data)
-        val clickableSpan = MyClickableSpan(listener)
-        spannableString.setSpan(
-            clickableSpan,
-            start,
-            end,
-            Spanned.SPAN_INCLUSIVE_EXCLUSIVE
-        )
-        val colorSpan = ForegroundColorSpan(Color.parseColor("#0099EE"))
-        spannableString.setSpan(
-            colorSpan, start,
-            end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE
-        );
-        tv.movementMethod = LinkMovementMethod.getInstance()
-        tv.text = spannableString
-
+    /***
+     * 银行卡截取获取后四位
+     * @param com 截取字段
+     * @return
+     */
+    fun cutOutBank(com: String?): String? {
+        if (KotlinStringUtil.isEmpty(com)) {
+            return ""
+        }
+        val length = com!!.length
+        if (length <= 4) {
+            return com
+        }
+        val start = length - 4
+        val substring = com.substring(start, length)
+        return substring
     }
-    internal class MyClickableSpan(var listener: SpannableStringListener?) : ClickableSpan() {
-        override fun onClick(p0: View) {
-            if (listener != null) {
-                listener!!.item()
-            }
-        }
 
-        override fun updateDrawState(ds: TextPaint) {
-            ds.isUnderlineText = false
-        }
+    private val density = Resources.getSystem().displayMetrics.density
 
-
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     * @param dpValue 虚拟像素
+     * @return 像素
+     */
+    fun dp2px(dpValue: Float): Int {
+        return (0.5f + dpValue * density).toInt()
     }
 }

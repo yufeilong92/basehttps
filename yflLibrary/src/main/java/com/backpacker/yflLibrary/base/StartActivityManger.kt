@@ -18,7 +18,7 @@ import com.example.UtilsLibrary.R
         val CNT_PARAMETE_TITLE: String = "param_title"
     }
 
-   open fun getBundle(): Bundle {
+   open fun getBundler(): Bundle {
         return Bundle()
     }
     fun jumpTo(clazz: Class<*>) {

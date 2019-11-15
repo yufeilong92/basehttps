@@ -17,6 +17,11 @@ import java.util.Date;
  * @Copyright: 2019
  */
 public class TimeUtil {
+    public static final int CINT_TIME_SECOND = 1000;
+    public static final int CINT_TIME_MINUTE = 60 * 1000;
+    public static final int CINT_TIME_HOUR = 3600 * 1000;
+    public static final int CINT_TIME_DAY = 24 * 3600 * 1000;
+
     /**
      * 获取当前时间戳
      *
@@ -222,5 +227,183 @@ public class TimeUtil {
         }
         return sb.toString();
 
+    }
+
+    /**
+     * 日期转为字符串
+     *
+     * @param date 如果为空，返回当前时间
+     * @return
+     */
+    public static String dateToString(Date date) {
+        if (date == null)
+            date = new Date();
+        return dateToString(date, "yyyy-MM-dd HH:mm:ss");
+    }
+    /**
+     * 日期转为字符串
+     *
+     * @param date 如果为空，返回当前时间
+     * @return
+     */
+    public static String dateToStringOne(Date date) {
+        if (date == null)
+            date = new Date();
+        return dateToString(date, "yyyy/MM/dd HH:mm:ss");
+    }
+    /**
+     * 日期转为字符串
+     *
+     * @param date 如果为空，返回当前时间
+     * @return
+     */
+    public static String dateToStringYMD(Date date) {
+        if (date == null)
+            date = new Date();
+        return dateToString(date, "yyyy-MM-dd");
+    }
+
+    /**
+     * 日期转为字符串
+     *
+     * @param date         如果为空，返回当前时间
+     * @param formatstring 如果为空，则默认格式yyyy-MM-dd HH:mm:ss
+     * @return
+     */
+    public static String dateToString(Date date, String formatstring) {
+        if (formatstring == null || formatstring.equals(""))
+            formatstring = "yyyy-MM-dd HH:mm:ss";
+        if (date == null)
+            date = new Date();
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(formatstring);
+            return sdf.format(date);
+        } catch (Exception e) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            return sdf.format(date);
+        }
+    }
+
+    public static long getTime() {
+        return new Date().getTime();
+    }
+
+    /**
+     * 是否超过一天
+     *
+     * @param str
+     * @return
+     */
+    //一天间隔时间（毫秒）
+    public static long time = 86400000;
+    public static boolean isMore(String str) {
+        long l1 = intervalNow(strToDate(str, null));
+        long l = l1 -time;
+        if (l > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * 是否超过一天
+     *
+     * @param str
+     * @return
+     */
+    public static long hourtime = 3600000;
+    public static boolean isMoreHour(String str) {
+        long l1 = intervalNow(strToDate(str, null));
+        long l = l1 - hourtime;
+        if (l > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * 返回两个时间的间隔(取绝对值)，单位ms
+     *
+     * @param date1
+     * @param date2
+     * @return
+     */
+    public static long interval(Date date1, Date date2) {
+        if (date1 == null && date2 == null)
+            return 0;
+        if (date1 == null)
+            return date2.getTime();
+        if (date2 == null)
+            return date1.getTime();
+        return Math.abs(date1.getTime() - date2.getTime());
+    }
+
+    /**
+     *
+     * @param date
+     * @param formatstr
+     * @return 字符串转化
+     */
+    public static String longToStr(long date, String formatstr) {
+        return dateToString(new Date(date), formatstr);
+    }
+
+    /**
+     *
+     * @param time
+     * @return 月日
+     */
+    public static String getTime(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("MM月dd日 HH:mm");
+        return format.format(new Date(time));
+    }
+
+    /***
+     *
+     * @param time
+     * @return 小时
+     */
+    public static String getHourAndMin(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        return format.format(new Date(time));
+    }
+    //截取年
+    public static int getYearTime(String str) {
+        int time = 0;
+        if (!JavaStringUtil.isEmpty(str)) {
+            int x = str.indexOf("-");
+            try {
+                time = Integer.parseInt(str.substring(0, x));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return time;
+    }
+
+    /***
+     * 获取年
+     * @return
+     */
+    public static String getCurrentYear() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        return sdf.format(date);
+    }
+
+    /**
+     * 判断时间是不是今天
+     * @param date
+     * @return    是返回true，不是返回false
+     */
+    public static boolean isNow(Date date) {
+        //当前时间
+        Date now = new Date();
+        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+        //获取今天的日期
+        String nowDay = sf.format(now);
+        //对比的时间
+        String day = sf.format(date);
+        return day.equals(nowDay);
     }
 }

@@ -79,28 +79,53 @@ object EditeTextUtil {
         }
     }
 
-    private var clickSendListener: onKeySendClickListener? = null
+    /*
+        private var clickSendListener: onKeySendClickListener? = null
 
-    interface onKeySendClickListener {
-        fun onSendClickListener()
-    }
+        interface onKeySendClickListener {
+            fun onSendClickListener()
+        }
 
-    fun setSendClickListener(clickListener: onKeySendClickListener) {
-        this.clickSendListener = clickListener
-    }
+        fun setSendClickListener(clickListener: onKeySendClickListener) {
+            this.clickSendListener = clickListener
+        }
+    */
 
-    fun setEditTextSendKey(editText: EditText) {
-        editText.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+    fun setEditTextSendKey(editText: EditText, onSendClickListener: () -> Unit) {
+ /*       editText.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent): Boolean {
                 if (actionId == EditorInfo.IME_ACTION_SEND) {
-                    if (clickSendListener != null) {
-                        clickSendListener!!.onSendClickListener()
-                        return true
-                    }
+                    onSendClickListener()
+                    return true
                 }
                 return false
             }
-        })
+        })*/
+        editText.setOnEditorActionListener { textView, i, keyEvent ->
+            if (i == EditorInfo.IME_ACTION_SEND) {
+                onSendClickListener()
+                true
+            } else
+                false
+        }
     }
 
+    fun setEditTextSearchKey(editText: EditText, onSearchClickListener: () -> Unit) {
+        /*    editText.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+                override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent): Boolean {
+                    if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                        onSearchClickListener()
+                        return true
+                    }
+                    return false
+                }
+            })*/
+        editText.setOnEditorActionListener { textView, i, keyEvent ->
+            if (i == EditorInfo.IME_ACTION_SEARCH) {
+                onSearchClickListener()
+                true
+            } else
+                false
+        }
+    }
 }

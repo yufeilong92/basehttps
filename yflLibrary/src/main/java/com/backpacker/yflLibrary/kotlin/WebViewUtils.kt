@@ -34,5 +34,4 @@ abstract class WebViewUtils {
         settings.loadsImagesAutomatically = true //支持自动加载图片
         settings.defaultTextEncodingName = "utf-8"//设置编码格式
     }
-
 }

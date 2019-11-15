@@ -1,6 +1,10 @@
 package com.backpacker.yflLibrary.java;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.text.Html;
+import android.text.Spanned;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 
 /**
@@ -23,5 +27,28 @@ public class JavaUtil {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return (int) ((dp * displayMetrics.density) + 0.5);
     }
+    public static int dp2px(Context context, float dp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return (int) ((dp * displayMetrics.density) + 0.5);
+    }
+    /**
+     * 改变颜色
+     *
+     * @param str1 要查询的字符串
+     * @param str2 要该变颜色字符串
+     * @return
+     */
+    public static Spanned repaceStr(String str1, String str2, String color) {
+
+        if (color == null || TextUtils.isEmpty(color)) {
+            color = "#fb595b";
+        }
+        String s = str1.replaceAll(str2, "<font color='" + color + "'><normal>" + str2 + "</normal></font>");
+        Spanned spanned = Html.fromHtml(s);
+
+        return spanned;
+
+    }
+
 
 }

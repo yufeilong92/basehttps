@@ -41,7 +41,7 @@ object SystemUtil {
      */
     fun getSystemAvailableSize(): Long {
         val root = Environment.getRootDirectory()
-        val sf = StatFs(root.getPath())
+        val sf = StatFs(root.path)
         val blockSize = sf.blockSize.toLong()
         val availCount = sf.availableBlocks.toLong()
         return availCount * blockSize
@@ -119,7 +119,7 @@ object SystemUtil {
      */
     fun getTitleBarHeight(context: Activity): Int {
         val contentTop = context.window
-            .findViewById<View>(Window.ID_ANDROID_CONTENT).getTop()
+            .findViewById<View>(Window.ID_ANDROID_CONTENT).top
         return contentTop - getStatusBarHeight(context)
     }
 
@@ -311,9 +311,18 @@ object SystemUtil {
     @SuppressLint("MissingPermission")
     fun getMobileIMEI(ctx: Context): String? {
         val tm = ctx.getSystemService(Activity.TELEPHONY_SERVICE) as TelephonyManager
-        return tm?.deviceId
+        return tm.deviceId
     }
-
+    /**
+     * 获取手机IMEI(需要“android.permission.READ_PHONE_STATE”权限)
+     *
+     * @return 手机IMEI
+     */
+    @SuppressLint("MissingPermission")
+    fun getMobileIMSI(ctx: Context): String? {
+        val tm = ctx.getSystemService(Activity.TELEPHONY_SERVICE) as TelephonyManager
+        return tm.subscriberId
+    }
     /**
      * 获取分辨率
      *
@@ -450,8 +459,8 @@ object SystemUtil {
      */
     fun clearAppCache(context: Context) {
         // 清除数据缓存
-        clearCacheFolder(context.getFilesDir(), System.currentTimeMillis())
-        clearCacheFolder(context.getCacheDir(), System.currentTimeMillis())
+        clearCacheFolder(context.filesDir, System.currentTimeMillis())
+        clearCacheFolder(context.cacheDir, System.currentTimeMillis())
         // 2.2版本才有将应用缓存转移到sd卡的功能
         if (LocaUtil.isMethodsCompat(Build.VERSION_CODES.FROYO)) {
             clearCacheFolder(
@@ -469,10 +478,10 @@ object SystemUtil {
      */
     private fun clearCacheFolder(dir: File?, curTime: Long): Int {
         var deletedFiles = 0
-        if (dir != null && dir!!.isDirectory()) {
+        if (dir != null && dir.isDirectory) {
             try {
-                for (child in dir!!.listFiles()) {
-                    if (child.isDirectory()) {
+                for (child in dir.listFiles()) {
+                    if (child.isDirectory) {
                         deletedFiles += clearCacheFolder(child, curTime)
                     }
                     if (child.lastModified() < curTime) {

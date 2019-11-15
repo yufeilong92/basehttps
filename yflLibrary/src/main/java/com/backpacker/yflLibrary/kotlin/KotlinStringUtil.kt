@@ -2,10 +2,7 @@ package com.backpacker.yflLibrary.kotlin
 
 import android.content.Context
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-
+import android.widget.*
 
 
 /**
@@ -39,11 +36,27 @@ object KotlinStringUtil {
             val btn = v as Button
             return btn.getText().toString().trim()
         }
+        if (v is CheckBox) {
+            val ch = v as CheckBox
+            return ch.text.toString().trim()
+        }
+        if (v is RadioButton){
+            val rb=v as RadioButton
+            return  rb.text.toString().trim()
+        }
         return ""
     }
 
     fun getStringWid(m: Context, id: Int): String {
         return m.getResources().getString(id)
+    }
+
+    fun setVinOrGone(tv: TextView, com: String?) {
+        if (isEmpty(com)) {
+            tv.visibility = View.GONE
+        } else {
+            tv.visibility = View.VISIBLE
+        }
     }
 
 }
