@@ -1,5 +1,6 @@
 package com.backpacker.yflLibrary.kotlin
 
+import android.Manifest.permission.VIBRATE
 import android.os.Environment
 import android.os.StatFs
 import android.content.pm.PackageManager
@@ -9,16 +10,25 @@ import android.view.View
 import android.view.Window
 import android.os.Build
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
+import android.content.res.Resources
+import android.graphics.Color
 import java.net.Inet4Address
 import java.net.NetworkInterface
 import android.text.TextUtils
 import android.telephony.TelephonyManager
 import android.net.ConnectivityManager
 import android.net.Uri
+import android.os.Vibrator
 import com.backpacker.yflLibrary.vo.Constants
 import android.util.DisplayMetrics
+import androidx.annotation.RequiresApi
+import androidx.annotation.RequiresPermission
+import androidx.fragment.app.Fragment
 import com.backpacker.yflLibrary.java.LocaUtil
+import com.oikawaii.library.core.android.util.ColorUtil
 import java.io.File
 
 
@@ -497,4 +507,34 @@ object SystemUtil {
         }
         return deletedFiles
     }
+
+
+    fun dp2px(dpValue: Float): Float {
+        val scale = Resources.getSystem().displayMetrics.density
+        return (dpValue * scale + 0.5F)
+    }
+
+    fun dp2px(dpValue: Int) = dp2px(dpValue.toFloat()).toInt()
+
+    fun px2dp(pxValue: Float): Float {
+        val scale = Resources.getSystem().displayMetrics.density
+        return (pxValue / scale + 0.5F)
+    }
+
+    fun px2dp(pxValue: Int) = px2dp(pxValue.toFloat()).toInt()
+
+    fun sp2px(spValue: Float): Float {
+        val fontScale = Resources.getSystem().displayMetrics.density
+        return (spValue * fontScale + 0.5F)
+    }
+
+    fun sp2px(spValue: Int) = sp2px(spValue.toFloat()).toInt()
+
+    fun px2sp(pxValue: Float): Float {
+        val fontScale = Resources.getSystem().displayMetrics.density
+        return (pxValue / fontScale + 0.5F)
+    }
+
+    fun px2sp(pxValue: Int) = px2sp(pxValue.toFloat()).toInt()
+
 }
