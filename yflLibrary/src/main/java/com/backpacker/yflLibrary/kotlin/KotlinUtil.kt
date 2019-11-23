@@ -272,6 +272,16 @@ object KotlinUtil {
         val regex = "[0-9]{18}"
         return text.matches(regx.toRegex()) || text.matches(reg1.toRegex()) || text.matches(regex.toRegex())
     }
+    /**
+     * 验证Email
+     *
+     * @param email email地址，格式：zhangsan@sina.com，zhangsan@xxx.com.cn，xxx代表邮件服务商
+     * @return 验证成功返回true，验证失败返回false
+     */
+    fun checkEmail(email: String): Boolean {
+        val regex = "\\w+@\\w+\\.[a-z]+(\\.[a-z]+)?"
+        return Pattern.matches(regex, email)
+    }
 
 
     fun getFormAssets(context: Context, fileName: String): String? {
@@ -472,5 +482,50 @@ object KotlinUtil {
      */
     fun dp2px(dpValue: Float): Int {
         return (0.5f + dpValue * density).toInt()
+    }
+
+    /**
+     * 验证身份证号码
+     *
+     * @param idCard 居民身份证号码15位或18位，最后一位可能是数字或字母
+     * @return 验证成功返回true，验证失败返回false
+     */
+    fun checkIdCard(idCard: String): Boolean {
+        val regex = "[1-9]\\d{13,16}[a-zA-Z0-9]{1}"
+        return Pattern.matches(regex, idCard)
+    }
+
+    /**
+     * 是否为车牌号（沪A88888）
+     *
+     * @param vehicleNo 车牌号
+     * @return 是否为车牌号
+     */
+
+    fun checkVehicleNo(vehicleNo: String): Boolean {
+        val pattern = Pattern.compile("^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{5}$")
+        return pattern.matcher(vehicleNo).find()
+
+    }
+
+
+    /**
+     * 身份证号，中间10位星号替换
+     *
+     * @param id 身份证号
+     * @return 星号替换的身份证号
+     */
+    fun idHide(id: String): String {
+        return id.replace("(\\d{4})\\d{10}(\\d{4})".toRegex(), "$1** **** ****$2")
+    }
+
+    /**
+     * 银行卡号，保留最后4位，其他星号替换
+     *
+     * @param cardId 卡号
+     * @return 星号替换的银行卡号
+     */
+    fun cardIdHide(cardId: String): String {
+        return cardId.replace("\\d{15}(\\d{3})".toRegex(), "**** **** **** **** $1")
     }
 }
