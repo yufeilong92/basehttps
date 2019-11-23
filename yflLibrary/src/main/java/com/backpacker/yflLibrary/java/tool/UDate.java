@@ -9,9 +9,9 @@ import java.util.NoSuchElementException;
 
 /**
  * @Description 时间日期处理
- * @Author Kosmos
+
  * @Date 2018年1月29日 16:04
- * @Email KosmoSakura@gmail.com
+ * @Author : YFL  is Creating a porject in DELL
  * @Tip  2018.10.31:重构
  * @Tip  2018.11.11:setFirstDayOfWeek的失效，修复获取当前星期的天数方法
  * @Tip  2018.11.22:获取当前短/长日期

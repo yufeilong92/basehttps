@@ -9,9 +9,8 @@ import java.util.regex.Pattern;
 
 /**
  * @Description 正则表达式
- * @Author Kosmos
+ * @Author : YFL  is Creating a porject in DELL
  * @Date 2016年9月21日 17:01
- * @Email KosmoSakura@gmail.com
  * @Tip →→is：是某种特定字符
  * →→checkXX:校验类
  * →→fun：功能类

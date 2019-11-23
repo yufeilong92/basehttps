@@ -66,8 +66,8 @@ import static com.backpacker.yflLibrary.java.tool.RxConstTool.KB;
 
 /**
  * Created in Sep 10, 2016 4:22:18 PM.
- *
- * @author Vondear.
+ * @Author : YFL  is Creating a porject in DELL
+
  */
 public class RxFileTool {
 

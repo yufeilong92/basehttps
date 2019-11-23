@@ -24,15 +24,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import static com.example.myapplication.view.RxFileTool.getDataColumn;
-import static com.example.myapplication.view.RxFileTool.isDownloadsDocument;
-import static com.example.myapplication.view.RxFileTool.isExternalStorageDocument;
-import static com.example.myapplication.view.RxFileTool.isGooglePhotosUri;
-import static com.example.myapplication.view.RxFileTool.isMediaDocument;
+import static com.backpacker.yflLibrary.java.tool.RxFileTool.getDataColumn;
+import static com.backpacker.yflLibrary.java.tool.RxFileTool.isDownloadsDocument;
+import static com.backpacker.yflLibrary.java.tool.RxFileTool.isExternalStorageDocument;
+import static com.backpacker.yflLibrary.java.tool.RxFileTool.isGooglePhotosUri;
+import static com.backpacker.yflLibrary.java.tool.RxFileTool.isMediaDocument;
 
 /**
  *
- * @author vondear
+ * @Author : YFL  is Creating a porject in DELL
  * @date 2016/1/24
  */
 

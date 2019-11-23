@@ -12,12 +12,13 @@ import java.security.SecureRandom;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-import static com.example.myapplication.view.RxDataTool.bytes2HexString;
-import static com.example.myapplication.view.RxDataTool.hexString2Bytes;
+import static com.backpacker.yflLibrary.java.tool.RxDataTool.bytes2HexString;
+import static com.backpacker.yflLibrary.java.tool.RxDataTool.hexString2Bytes;
+
 
 /**
  *
- * @author vondear
+ * @Author : YFL  is Creating a porject in DELL
  * @date 2016/1/24
  * 加密解密相关的工具类
  */

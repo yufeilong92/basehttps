@@ -10,7 +10,7 @@ import java.net.URLEncoder;
 
 /**
  *
- * @author vondear
+ * @Author : YFL  is Creating a porject in DELL
  * @date 2016/1/24
  * 编码解码相关工具类
  */

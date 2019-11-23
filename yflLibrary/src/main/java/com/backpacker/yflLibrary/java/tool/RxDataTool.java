@@ -27,7 +27,7 @@ import static com.example.myapplication.view.RxConstTool.KB;
 import static com.example.myapplication.view.RxConstTool.MB;
 
 /**
- * @author vondear
+ * @Author : YFL  is Creating a porject in DELL
  * @date 2016/1/24
  * 数据处理相关
  * <p>

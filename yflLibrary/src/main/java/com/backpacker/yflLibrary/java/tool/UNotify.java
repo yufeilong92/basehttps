@@ -17,9 +17,8 @@ import com.example.UtilsLibrary.R;
 
 /**
  * @Description: 通知工具，适配Android8.0
- * @Author: Kosmos
+ * @Author : YFL  is Creating a porject in DELL
  * @Date: 2018.12.25 11:04
- * @Email: KosmoSakura@gmail.com
  * mBuilder.setContentTitle("测试标题")//设置通知栏标题
  * .setContentText("测试内容") /<span style="font-family: Arial;">/设置通知栏显示内容</span>
  * .setContentIntent(getDefalutIntent(Notification.FLAG_AUTO_CANCEL)) //设置通知栏点击意图

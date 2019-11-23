@@ -2,7 +2,7 @@ package com.backpacker.yflLibrary.java.tool;
 
 /**
  *
- * @author vondear
+ * @Author : YFL  is Creating a porject in DELL
  * @date 2016/1/24
  * 常量工具类
  */

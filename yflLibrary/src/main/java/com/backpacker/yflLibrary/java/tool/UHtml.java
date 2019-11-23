@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 /**
  * @Description Html处理
- * @Author Kosmos
+
  * @Date 2019.11.19 17:24
- * @Email KosmoSakura@gmail.com
+ * @Author : YFL  is Creating a porject in DELL
  * @Tip
  */
 public class UHtml {
