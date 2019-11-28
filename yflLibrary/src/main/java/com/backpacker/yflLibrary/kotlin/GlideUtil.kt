@@ -7,7 +7,6 @@ import com.backpacker.yflLibrary.java.JavaStringUtil
 import com.backpacker.yflLibrary.java.JavaUtil
 import com.backpacker.yflLibrary.java.share.RoundedCornersTransform
 import com.backpacker.yflLibrary.kotlin.KotlinStringUtil
-import com.backpacker.yflLibrary.kotlin.OssGlideUrl
 import com.backpacker.yflLibrary.kotlin.RoundCorner
 import com.backpacker.yflLibrary.view.GlideRoundedCornersTransform
 import com.bumptech.glide.Glide

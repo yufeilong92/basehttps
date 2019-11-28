@@ -21,10 +21,11 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.Map;
 
-import static com.example.myapplication.view.RxConstTool.BYTE;
-import static com.example.myapplication.view.RxConstTool.GB;
-import static com.example.myapplication.view.RxConstTool.KB;
-import static com.example.myapplication.view.RxConstTool.MB;
+import static com.backpacker.yflLibrary.java.tool.RxConstTool.BYTE;
+import static com.backpacker.yflLibrary.java.tool.RxConstTool.GB;
+import static com.backpacker.yflLibrary.java.tool.RxConstTool.KB;
+import static com.backpacker.yflLibrary.java.tool.RxConstTool.MB;
+
 
 /**
  * @Author : YFL  is Creating a porject in DELL

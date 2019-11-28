@@ -33,9 +33,9 @@ import com.example.UtilsLibrary.R;
  * .setSmallIcon(R.drawable.ic_launcher);//设置通知小ICON
  */
 public class UNotify {
-    /**
+/*    *//**
      * Service的onCreate中通知
-     */
+     *//*
     private abstract class SampleService extends Service {
         public static final int NOTICE_ID = 10010;
 
@@ -62,7 +62,7 @@ public class UNotify {
             //onStartCommand 方法一定会被重新调用
             return START_STICKY;
         }
-    }
+    }*/
 
     private static final String CHANNEL_ID = "SAKURA_RUN";
     private static final String CHANNEL_NAME = "SAKURA_NAME";

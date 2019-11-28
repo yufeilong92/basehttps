@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.backpacker.yflLibrary.kotlin.PermissionUtils
-import com.yanzhenjie.permission.Permission
+import com.yanzhenjie.permission.runtime.Permission
 import com.yfl.base.R
 import com.yfl.base.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_open_video.*
@@ -27,7 +27,8 @@ class OpenVideoActivity : BaseActivity() {
     fun initView() {
         btn_open_video.setOnClickListener {
             PermissionUtils.showPermission(mContext, "",
-                    arrayOf(Permission.READ_EXTERNAL_STORAGE,
+                    arrayOf(
+                        Permission.READ_EXTERNAL_STORAGE,
                             Permission.WRITE_EXTERNAL_STORAGE,
                             Permission.RECORD_AUDIO,
                             Permission.CAMERA)) {

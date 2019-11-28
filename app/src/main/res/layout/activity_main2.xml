@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.yfl.base.ui.Main2Activity"
+        tools:ignore="MissingDefaultResource">
+    <com.backpacker.yflLibrary.view.GmTitleBarView
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:app_bar_bg="@color/bule_one"
+            app:app_title_bar_bg="@color/bule_one"
+            app:right_content="测试"
+            app:right_color="@color/red"
+            app:right_size="@dimen/sp_14"
+            app:tv_right_boolean="true"
+            app:content_content="你好"
+            app:content_size="@dimen/sp_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,8 @@ package com.backpacker.yflLibrary.java;
 import android.content.Context;
 import android.util.Log;
 
+import com.backpacker.yflLibrary.kotlin.ImagerUtil;
+
 import java.io.File;
 
 import top.zibin.luban.Luban;
@@ -45,7 +47,7 @@ public class LunBanUtil {
         Luban.with(mContext)
                 .load(path)
                 .ignoreBy(100)
-                .setTargetDir(FileUtil.getFilePath(mContext))
+                .setTargetDir(ImagerUtil.INSTANCE.getDefaultPath(mContext))
                 .setCompressListener(new OnCompressListener() {
                     @Override
                     public void onStart() {

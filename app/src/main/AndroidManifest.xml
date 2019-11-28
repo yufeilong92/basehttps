@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.yfl.base">
+        package="com.yfl.base">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_LOGS"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
             android:name=".application.BaseApplication"
@@ -20,35 +20,31 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/MyAppTheme">
-        <activity android:name=".ui.TextActivity"
-                  android:windowSoftInputMode="adjustPan">
-
-        </activity>
-        <activity android:name=".ui.login.LoginActivity">
-        </activity>
-        <activity android:name=".ui.TestActivity">
+        <activity android:name=".ui.Main2Activity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.DemoActivity">
 
         </activity>
-        <activity android:name=".SelectImagerActivity">
-        </activity>
-        <activity android:name=".video.OpenVideoActivity">
+        <activity
+                android:name=".ui.TextActivity"
+                android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.TestActivity">
 
         </activity>
-        <activity android:name=".video.VideoActivity"></activity>
+        <activity android:name=".ui.DemoActivity" />
+        <activity android:name=".SelectImagerActivity" />
+        <activity android:name=".video.OpenVideoActivity" />
+        <activity android:name=".video.VideoActivity" />
         <activity
                 android:name=".ui.GuideActivity"
-                android:theme="@style/MyAppTheme">
-        </activity>
+                android:theme="@style/MyAppTheme" />
         <activity
                 android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
-                android:configChanges="orientation|screenSize"/>
+                android:configChanges="orientation|screenSize" />
 
         <provider
                 android:name="androidx.core.content.FileProvider"
@@ -57,27 +53,27 @@
                 android:grantUriPermissions="true">
             <meta-data
                     android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/provider_paths"/>
+                    android:resource="@xml/provider_paths" />
         </provider> <!-- ================bug================== -->
         <!-- 配置APP ID -->
         <meta-data
                 android:name="BUGLY_APPID"
-                android:value="1233222"/> <!-- 配置APP版本号 -->
+                android:value="1233222" /> <!-- 配置APP版本号 -->
         <meta-data
                 android:name="BUGLY_APP_VERSION"
-                android:value="1.0"/> <!-- 配置APP渠道号 -->
+                android:value="1.0" /> <!-- 配置APP渠道号 -->
         <meta-data
                 android:name="BUGLY_APP_CHANNEL"
-                android:value="APP Channel"/> <!-- 配置Bugly调试模式（true或者false） -->
+                android:value="APP Channel" /> <!-- 配置Bugly调试模式（true或者false） -->
         <meta-data
                 android:name="BUGLY_ENABLE_DEBUG"
-                android:value="true"/> <!-- ================================== -->
+                android:value="true" /> <!-- ================================== -->
         <meta-data
                 android:name="android.max_aspect"
-                android:value="2.1"/>
+                android:value="2.1" />
         <meta-data
                 android:name="UPDATE_APP_KEY"
-                android:value="ab55ce55Ac4bcP408cPb8c1Aaeac179c5f6f"/>
+                android:value="ab55ce55Ac4bcP408cPb8c1Aaeac179c5f6f" />
     </application>
 
 </manifest>
