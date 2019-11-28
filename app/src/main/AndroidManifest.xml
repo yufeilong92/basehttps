@@ -20,21 +20,19 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/MyAppTheme">
+
         <activity android:name=".ui.Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
                 android:name=".ui.TextActivity"
                 android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".ui.TestActivity">
-
-        </activity>
+        <activity android:name=".ui.TestActivity"></activity>
         <activity android:name=".ui.DemoActivity" />
         <activity android:name=".SelectImagerActivity" />
         <activity android:name=".video.OpenVideoActivity" />
