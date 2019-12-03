@@ -1,1 +1,1 @@
-include ':app', ':yflLibrary', ':simplezxing', ':update-app-kotlin', ':camera', ':video-compressor'
+include ':app', ':yflLibrary', ':simplezxing', ':update-app-kotlin', ':camera', ':video-compressor', ':multi-image-selector'

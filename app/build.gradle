@@ -71,7 +71,7 @@ dependencies {
     implementation "com.yanzhenjie:permission:$rootProject.ext.permissionVersion"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation "com.alibaba:fastjson:$rootProject.ext.fastjsonVersion"
-    implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
+//    implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
     //对话框选择框
     implementation 'com.github.addappcn:android-pickers:1.0.3'
     //tablerlayout
