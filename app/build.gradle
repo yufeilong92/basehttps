@@ -88,5 +88,6 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-10'
     implementation project(path: ':camera')
     implementation project(path: ':video-compressor')
+    implementation project(path: ':multi-image-selector')
     implementation 'com.zzhoujay.richtext:richtext:2.5.1'
 }
