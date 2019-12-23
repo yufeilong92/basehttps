@@ -25,6 +25,7 @@ public class JavaStringUtil {
             return true;
         return false;
     }
+
     public static String getObjectToStr(View v) {
         if (v instanceof TextView) {
             TextView tv = (TextView) v;
@@ -71,33 +72,21 @@ public class JavaStringUtil {
 
     }
 
-    /**
-     * @param str "1967+2356-433*12/66"
-     * @return [1967], [2356], [433], [12], [66]
+    /***
+     * @param name 获取匿名字
+     * @param postion
+     * @return 小乐888...
      */
-    public static String[] split(String str) {
-        return str.split("[+\\-*/]");
-    }
-
-    /**
-     * @return 返回：首字母大写字符串
-     */
-    public static String upperFirstLetter(String str) {
-        if (JavaStringUtil.isEmpty(str) || !Character.isLowerCase(str.charAt(0))) {
-            return str;
-        } else {
-            return String.valueOf((char) (str.charAt(0) - 32)) + str.substring(1);
+    public static String getSubStringName(String name, int postion) {
+        if (isEmpty(name)) {
+            return "";
         }
-    }
-
-    /**
-     * @return 返回：首字母小写字符串
-     */
-    public static String lowerFirstLetter(String str) {
-        if (JavaStringUtil.isEmpty(str) || !Character.isUpperCase(str.charAt(0))) {
-            return str;
-        } else {
-            return String.valueOf((char) (str.charAt(0) + 32)) + str.substring(1);
+        int length = name.length();
+        if (length <= postion) {
+            return name;
         }
+        String substring = name.substring(0, postion);
+        return substring.concat("...");
+
     }
 }

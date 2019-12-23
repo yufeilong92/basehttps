@@ -15,6 +15,10 @@ public class CountdownUtil {
     Handler handler = new Handler();
     private static CountdownUtil util;
     private Button button;
+    /***
+     * 是否停止
+     */
+    private boolean isStop = false;
     /**
      * 运行时字体颜色
      */
@@ -35,6 +39,10 @@ public class CountdownUtil {
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
+            if (isStop) {
+                stop();
+                return;
+            }
             recLen--;
             if (recLen == 0) {
                 button.setText("重新发送");
@@ -63,6 +71,7 @@ public class CountdownUtil {
     public void startTime(Context context, final Button button) {
         this.button = button;
         this.mContext = context;
+        isStop=false;
         button.setEnabled(false);
         handler.postDelayed(runnable, 1000);
     }
@@ -77,6 +86,7 @@ public class CountdownUtil {
         this.mContext = context;
         this.mColor = color;
         button.setEnabled(false);
+        isStop=false;
         handler.postDelayed(runnable, 1000);
     }
 
@@ -92,6 +102,7 @@ public class CountdownUtil {
         this.mColor = color;
         this.textColot = txtColorS;
         button.setEnabled(false);
+        isStop=false;
         handler.postDelayed(runnable, 1000);
     }
 
@@ -102,7 +113,10 @@ public class CountdownUtil {
     }
 
     public void stop() {
+        recLen = 60;
+        isStop=true;
         handler.postDelayed(null, 1000);
+        handler.removeCallbacksAndMessages(null);
     }
 
     /***
@@ -121,6 +135,13 @@ public class CountdownUtil {
         this.textColot = shapeBtGray;
         this.text_d = white;
         this.textColot_n = shapeBtGreen;
+        recLen = 60;
+        if (handler == null) {
+            handler = new Handler();
+        } else {
+            handler.removeCallbacksAndMessages(null);
+        }
+        isStop=false;
         button.setEnabled(false);
         handler.postDelayed(runnable, 1000);
     }

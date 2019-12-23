@@ -142,5 +142,28 @@ public class SystemUtil {
         }
         return false;
     }
+    /**
+     * 获取状态栏高度
+     * @return
+     */
+    public static int getStatusBarsHeight(Context mContext) {
+        int result = 0;
+        int resourceId =mContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result =mContext.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
 
+    /**
+     * 获取控件左上顶点Y坐标
+     *
+     * @param view
+     * @return
+     */
+    public static int getCoordinateY(View view) {
+        int[] coordinate = new int[2];
+        view.getLocationOnScreen(coordinate);
+        return coordinate[1];
+    }
 }

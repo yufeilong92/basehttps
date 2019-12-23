@@ -1,16 +1,15 @@
 package com.backpacker.yflLibrary.kotlin
 
-import android.widget.EditText
 import android.app.Activity
 import android.content.Context
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.view.KeyEvent
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.CheckBox
+import android.widget.EditText
 import java.util.*
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 
 
 /**
@@ -39,6 +38,11 @@ object EditeTextUtil {
                 inputManager.showSoftInput(editText, 0)
             }
         }, 300)
+    }
+    fun hideSoftInput(context: Context, view: View) {
+        val imm =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0) //强制隐藏键盘
     }
 
     /**

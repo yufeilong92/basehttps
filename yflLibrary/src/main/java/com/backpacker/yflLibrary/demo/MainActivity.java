@@ -2,9 +2,7 @@ package com.backpacker.yflLibrary.demo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.backpacker.yflLibrary.view.RxCaptcha;
-
-public class MainActivity extends AppCompatActivity /*implements View.OnClickListener */ {
+public class MainActivity extends AppCompatActivity /*implements View.OnClickListener */{
 //    ViewFlipper mViewFlipper;
 //    Button btn_stop;
 //    Button btn_start;
@@ -123,14 +121,5 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 //break;
 //
 //        }
-//         RxCaptcha.build()
-//                 .backColor(0xffffff)
-//            .codeLength(4)
-//            .fontSize(60)
-//            .lineNumber(0)
-//            .size(200, 70)
-//            .type(RxCaptcha.TYPE.NUMBER)
-//            .into(iv_code)
-//    tv_code.text = (RxCaptcha.build().code)
 //    }
 }

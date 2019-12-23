@@ -1,6 +1,5 @@
 package com.backpacker.yflLibrary.kotlin
 
-import android.Manifest.permission.VIBRATE
 import android.os.Environment
 import android.os.StatFs
 import android.content.pm.PackageManager
@@ -10,25 +9,16 @@ import android.view.View
 import android.view.Window
 import android.os.Build
 import android.annotation.SuppressLint
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Intent
-import android.content.res.Resources
-import android.graphics.Color
 import java.net.Inet4Address
 import java.net.NetworkInterface
 import android.text.TextUtils
 import android.telephony.TelephonyManager
 import android.net.ConnectivityManager
 import android.net.Uri
-import android.os.Vibrator
 import com.backpacker.yflLibrary.vo.Constants
 import android.util.DisplayMetrics
-import androidx.annotation.RequiresApi
-import androidx.annotation.RequiresPermission
-import androidx.fragment.app.Fragment
 import com.backpacker.yflLibrary.java.LocaUtil
-import com.oikawaii.library.core.android.util.ColorUtil
 import java.io.File
 
 
@@ -113,7 +103,8 @@ object SystemUtil {
     fun getAppSystemVersionCode(context: Context): Int {
         try {
             return context.packageManager.getPackageInfo(
-                context.packageName, 0).versionCode
+                context.packageName, 0
+            ).versionCode
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
         }
@@ -320,9 +311,14 @@ object SystemUtil {
      */
     @SuppressLint("MissingPermission")
     fun getMobileIMEI(ctx: Context): String? {
-        val tm = ctx.getSystemService(Activity.TELEPHONY_SERVICE) as TelephonyManager
-        return tm.deviceId
+        try {
+            val tm = ctx.getSystemService(Activity.TELEPHONY_SERVICE) as TelephonyManager
+            return tm.deviceId
+        } catch (e: Exception) {
+            return ""
+        }
     }
+
     /**
      * 获取手机IMEI(需要“android.permission.READ_PHONE_STATE”权限)
      *
@@ -330,9 +326,15 @@ object SystemUtil {
      */
     @SuppressLint("MissingPermission")
     fun getMobileIMSI(ctx: Context): String? {
-        val tm = ctx.getSystemService(Activity.TELEPHONY_SERVICE) as TelephonyManager
-        return tm.subscriberId
+        try {
+            val tm = ctx.getSystemService(Activity.TELEPHONY_SERVICE) as TelephonyManager
+            return tm.subscriberId
+
+        } catch (e: Exception) {
+            return ""
+        }
     }
+
     /**
      * 获取分辨率
      *
@@ -369,27 +371,29 @@ object SystemUtil {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP) {
 
             //获得ConnectivityManager对象
-            val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connMgr =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
             //获取ConnectivityManager对象对应的NetworkInfo对象
             //获取WIFI连接的信息
             val wifiNetworkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
             //获取移动数据连接的信息
             val dataNetworkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
-            if (wifiNetworkInfo != null && dataNetworkInfo != null && wifiNetworkInfo.isConnected && dataNetworkInfo.isConnected) {//WIFI已连接,移动数据已连接
+            if (wifiNetworkInfo != null && dataNetworkInfo != null && wifiNetworkInfo.isConnected && dataNetworkInfo.isConnected) { //WIFI已连接,移动数据已连接
                 netWorkType = Constants.NETWORK_WIFI
-            } else if (wifiNetworkInfo != null && wifiNetworkInfo.isConnected) {//WIFI已连接,移动数据已断开
+            } else if (wifiNetworkInfo != null && wifiNetworkInfo.isConnected) { //WIFI已连接,移动数据已断开
                 netWorkType = Constants.NETWORK_WIFI
-            } else if (dataNetworkInfo != null && dataNetworkInfo.isConnected) {//WIFI已断开,移动数据已连接
+            } else if (dataNetworkInfo != null && dataNetworkInfo.isConnected) { //WIFI已断开,移动数据已连接
                 netWorkType = Constants.NETWORK_CLASS_4_G
-            } else {//WIFI已断开,移动数据已断开
+            } else { //WIFI已断开,移动数据已断开
                 netWorkType = Constants.NETWORK_CLASS_UNKNOWN
             }
         } else {
             //这里的就不写了，前面有写，大同小异
             println("API level 大于21")
             //获得ConnectivityManager对象
-            val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connMgr =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             //获取所有网络连接的信息
             val networks = connMgr.allNetworks
             //通过循环将网络信息逐个取出来.
@@ -464,6 +468,7 @@ object SystemUtil {
         }
         context.startActivity(intent)
     }
+
     /**
      * 清除app缓存
      */
@@ -479,6 +484,7 @@ object SystemUtil {
             )
         }
     }
+
     /**
      * 清除缓存目录
      *
@@ -507,34 +513,4 @@ object SystemUtil {
         }
         return deletedFiles
     }
-
-
-    fun dp2px(dpValue: Float): Float {
-        val scale = Resources.getSystem().displayMetrics.density
-        return (dpValue * scale + 0.5F)
-    }
-
-    fun dp2px(dpValue: Int) = dp2px(dpValue.toFloat()).toInt()
-
-    fun px2dp(pxValue: Float): Float {
-        val scale = Resources.getSystem().displayMetrics.density
-        return (pxValue / scale + 0.5F)
-    }
-
-    fun px2dp(pxValue: Int) = px2dp(pxValue.toFloat()).toInt()
-
-    fun sp2px(spValue: Float): Float {
-        val fontScale = Resources.getSystem().displayMetrics.density
-        return (spValue * fontScale + 0.5F)
-    }
-
-    fun sp2px(spValue: Int) = sp2px(spValue.toFloat()).toInt()
-
-    fun px2sp(pxValue: Float): Float {
-        val fontScale = Resources.getSystem().displayMetrics.density
-        return (pxValue / fontScale + 0.5F)
-    }
-
-    fun px2sp(pxValue: Int) = px2sp(pxValue.toFloat()).toInt()
-
 }

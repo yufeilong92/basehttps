@@ -1,6 +1,8 @@
 package com.backpacker.yflLibrary.kotlin
 
 import android.content.Context
+import android.text.Html
+import android.text.Spanned
 import android.view.View
 import android.widget.*
 
@@ -26,11 +28,11 @@ object KotlinStringUtil {
     fun getObjectToStr(v: View): String {
         if (v is TextView) {
             val tv = v as TextView
-            return tv.text.toString().trim { it <= ' ' }
+            return tv.text.toString().trim()
         }
         if (v is EditText) {
             val et = v as EditText
-            return et.text.toString().trim { it <= ' ' }
+            return et.text.toString().trim()
         }
         if (v is Button) {
             val btn = v as Button
@@ -40,9 +42,9 @@ object KotlinStringUtil {
             val ch = v as CheckBox
             return ch.text.toString().trim()
         }
-        if (v is RadioButton){
-            val rb=v as RadioButton
-            return  rb.text.toString().trim()
+        if (v is RadioButton) {
+            val rb = v as RadioButton
+            return rb.text.toString().trim()
         }
         return ""
     }
@@ -59,4 +61,23 @@ object KotlinStringUtil {
         }
     }
 
+    fun setTextXXXX(com: String): String? {
+        if (isEmpty(com)) return ""
+        if (com.length <= 12) {
+            return com
+        }
+        val subSequence = com.subSequence(0, 4).toString()
+        val charSequence = com.subSequence(com.length - 4, com.length).toString()
+        return "$subSequence****$charSequence"
+
+
+    }
+
+    fun setTextYMoeny(tv: TextView) {
+        tv.text = Html.fromHtml("&yen")
+    }
+
+    fun getTextYMoney(): Spanned {
+        return Html.fromHtml("&yen")
+    }
 }
