@@ -12,10 +12,6 @@ import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 /**
  * 文件工具类
@@ -103,5 +99,8 @@ public class FileUtil {
         }
 
         return new File(path).length();
+
+
     }
+
 }
