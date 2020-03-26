@@ -1,9 +1,16 @@
 package com.backpacker.yflLibrary.java;
 
 
+import android.util.Log;
+
+import com.backpacker.yflLibrary.kotlin.T;
+import com.example.UtilsLibrary.R;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -130,6 +137,7 @@ public class TimeUtil {
             return (new Date()).getTime();
         return (new Date()).getTime() - date.getTime();
     }
+
     //截取年月日
     public static String getYMDT(String str) {
         String time = "";
@@ -141,8 +149,10 @@ public class TimeUtil {
         }
         return time;
     }
+
     /**
      * 字符传转换成long
+     *
      * @param time
      * @return
      */
@@ -155,6 +165,7 @@ public class TimeUtil {
             return 0;
         return date.getTime();
     }
+
     //毫秒换成00:00:00
     public static String getCountTimeByLong(long finishTime) {
         int totalTime = (int) (finishTime / 1000);//秒
@@ -240,6 +251,7 @@ public class TimeUtil {
             date = new Date();
         return dateToString(date, "yyyy-MM-dd HH:mm:ss");
     }
+
     /**
      * 日期转为字符串
      *
@@ -251,6 +263,7 @@ public class TimeUtil {
             date = new Date();
         return dateToString(date, "yyyy/MM/dd HH:mm:ss");
     }
+
     /**
      * 日期转为字符串
      *
@@ -296,15 +309,17 @@ public class TimeUtil {
      */
     //一天间隔时间（毫秒）
     public static long time = 86400000;
+
     public static boolean isMore(String str) {
         long l1 = intervalNow(strToDate(str, null));
-        long l = l1 -time;
+        long l = l1 - time;
         if (l > 0) {
             return true;
         } else {
             return false;
         }
     }
+
     /**
      * 是否超过一天
      *
@@ -312,6 +327,7 @@ public class TimeUtil {
      * @return
      */
     public static long hourtime = 3600000;
+
     public static boolean isMoreHour(String str) {
         long l1 = intervalNow(strToDate(str, null));
         long l = l1 - hourtime;
@@ -321,6 +337,7 @@ public class TimeUtil {
             return false;
         }
     }
+
     /**
      * 返回两个时间的间隔(取绝对值)，单位ms
      *
@@ -339,7 +356,6 @@ public class TimeUtil {
     }
 
     /**
-     *
      * @param date
      * @param formatstr
      * @return 字符串转化
@@ -349,12 +365,20 @@ public class TimeUtil {
     }
 
     /**
-     *
      * @param time
      * @return 月日
      */
     public static String getTime(long time) {
         SimpleDateFormat format = new SimpleDateFormat("MM月dd日 HH:mm");
+        return format.format(new Date(time));
+    }
+
+    /**
+     * @param time
+     * @return 月日
+     */
+    public static String getTimes(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("MM月dd日");
         return format.format(new Date(time));
     }
 
@@ -367,6 +391,7 @@ public class TimeUtil {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         return format.format(new Date(time));
     }
+
     //截取年
     public static int getYearTime(String str) {
         int time = 0;
@@ -393,8 +418,9 @@ public class TimeUtil {
 
     /**
      * 判断时间是不是今天
+     *
      * @param date
-     * @return    是返回true，不是返回false
+     * @return 是返回true，不是返回false
      */
     public static boolean isNow(Date date) {
         //当前时间
@@ -406,4 +432,375 @@ public class TimeUtil {
         String day = sf.format(date);
         return day.equals(nowDay);
     }
+
+    /**
+     * 用于显示时间
+     */
+    public static final String TODAY = "今天";
+    public static final String YESTERDAY = "昨天";
+    public static final String TOMORROW = "明天";
+    public static final String BEFORE_YESTERDAY = "前天";
+    public static final String AFTER_TOMORROW = "后天";
+
+    /**
+     * 获取对应时间戳转换的今天、明天。。。。的日期 * @param time * @return
+     */
+    public static String getToday(String time) {
+        Calendar pre = Calendar.getInstance();
+        Date predate = new Date(System.currentTimeMillis());
+        pre.setTime(predate);
+
+        Calendar cal = Calendar.getInstance();
+
+        Date date = strToDate(time, "yyyy-MM-dd HH:mm:ss", new Date());
+        cal.setTime(date);
+
+        if (cal.get(Calendar.YEAR) == (pre.get(Calendar.YEAR))) {
+            int diffDay = cal.get(Calendar.DAY_OF_YEAR)
+                    - pre.get(Calendar.DAY_OF_YEAR);
+
+            return showDateDetail(diffDay, time);
+
+        }
+        return time;
+    }
+
+    /**
+     * 将日期差显示为今天、明天或者星期 * @param diffDay * @param time * @return
+     */
+    private static String showDateDetail(int diffDay, String time) {
+        switch (diffDay) {
+            case 0:
+                return TODAY;
+            case 1:
+                return TOMORROW;
+            case 2:
+                return AFTER_TOMORROW;
+            case -1:
+                return YESTERDAY;
+            case -2:
+                return BEFORE_YESTERDAY;
+            default:
+                return getWeek(time);
+        }
+    }
+
+    /**
+     * 计算周几
+     */
+    public static String getWeek(String data) {
+        SimpleDateFormat sdr = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
+        long lcc = Long.valueOf(data);
+        int i = Integer.parseInt(data);
+        String times = sdr.format(new Date(i * 1000L));
+        Date date = null;
+        int mydate = 0;
+        String week = "";
+        try {
+            date = sdr.parse(times);
+            Calendar cd = Calendar.getInstance();
+            cd.setTime(date);
+            mydate = cd.get(Calendar.DAY_OF_WEEK);
+            // 获取指定日期转换成星期几
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        if (mydate == 1) {
+            week = "星期日";
+        } else if (mydate == 2) {
+            week = "星期一";
+        } else if (mydate == 3) {
+            week = "星期二";
+        } else if (mydate == 4) {
+            week = "星期三";
+        } else if (mydate == 5) {
+            week = "星期四";
+        } else if (mydate == 6) {
+            week = "星期五";
+        } else if (mydate == 7) {
+            week = "星期六";
+        }
+        return week;
+    }
+
+    public static String getFormatTime(String time, DateFormatUtil type) {
+        if (JavaStringUtil.isEmpty(time)) {
+            return new Date().toString();
+        }
+        String isFormattType = type.getValue();
+        SimpleDateFormat sdf = new SimpleDateFormat(DateFormatUtil.YMDHMS.getValue());
+        Date date=null;
+        try {
+            date=sdf.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat format = new SimpleDateFormat(isFormattType);
+        return format.format(new Date(date.getTime()));
+
+    }
+
+    /***
+     * 时间格式
+     */
+    public static enum DateFormatUtil {
+        YMDHMS("yyyy-MM-dd HH:mm:ss"), YMD("yyyy-MM-dd"),
+        HMS("HH:mm:ss"), MD("MM-dd"), HM("HH:mm");
+        String value;
+
+        DateFormatUtil(String yy) {
+            this.value = yy;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
+
+    /***
+     * @param time 时间
+     * @param type 格式类型
+     * @param isFormat 是否格式化
+     *
+     * @return 今天 ，明天， 后天   时间
+     */
+    public static String getDifDay(String time, DateFormatUtil type, Boolean isFormat) {
+        String content = "";
+        if (JavaStringUtil.isEmpty(time)) {
+            return content;
+        }
+        String isFormattType = "yyyy-MM-dd HH:mm:ss";
+        if (isFormat) {
+            isFormattType = type.getValue();
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat(isFormattType);
+        Calendar nowData = Calendar.getInstance();
+        try {
+            Date parse = sdf.parse(time);
+            time = sdf.format(parse);
+            if (parse == null) {
+                content = "";
+            } else {
+                Calendar date = Calendar.getInstance();
+                date.setTime(parse);
+
+                //判断同年，判断同月 判断同日
+                int nowDataYear = nowData.get(Calendar.YEAR);
+                int year = date.get(Calendar.YEAR);
+                int difYear = nowDataYear - year;
+                //刷选的月数
+                int monthZone = date.get(Calendar.MONTH);
+                //当前的月数
+                int nowmonthZone = nowData.get(Calendar.MONTH);
+
+                //筛选天数
+                int dayZone = date.get(Calendar.DAY_OF_MONTH);
+                //当前天数
+                int nowDataDayZone = nowData.get(Calendar.DAY_OF_MONTH);
+                switch (difYear) {
+                    case 1://前年
+                        switch (monthZone) {//当前月数
+                            case 11:
+                                switch (nowmonthZone) {//刷选月数
+                                    case 0://刷选为一月
+                                        //当前天数的最后一天
+                                        date.set(Calendar.DAY_OF_MONTH, nowData.getActualMaximum(Calendar.DAY_OF_MONTH));
+                                        int beforMaxDay = date.get(Calendar.DAY_OF_MONTH);
+                                        int difNowDay = beforMaxDay - dayZone;
+                                        switch (difNowDay) {
+                                            case 0://该月最后一天
+                                                switch (nowDataDayZone) {
+                                                    case 1:
+                                                        content = "昨天";
+                                                        break;
+                                                    case 2:
+                                                        content = "前天";
+                                                        break;
+                                                    default:
+                                                        content = time;
+                                                        break;
+                                                }
+                                                break;
+                                            case 1:
+                                                switch (nowDataDayZone) {
+                                                    case 1:
+                                                        content = "前天";
+                                                        break;
+                                                    default:
+                                                        content = time;
+                                                        break;
+                                                }
+
+                                                break;
+                                            default:
+                                                content = time;
+                                                break;
+                                        }
+
+                                        break;
+                                    default:
+                                        content = time;
+                                        break;
+                                }
+                                break;
+                            default:
+                                content = time;
+                                break;
+                        }
+
+
+                        break;
+                    case 0:
+                        int differenceMonthZone = nowmonthZone - monthZone;
+
+
+                        switch (differenceMonthZone) {
+                            case 1://上个月
+                                Calendar instanceZone = Calendar.getInstance();
+                                instanceZone.set(Calendar.MONTH, nowmonthZone - 1);
+                                instanceZone.set(Calendar.DAY_OF_MONTH, instanceZone.getActualMaximum(Calendar.DAY_OF_MONTH));
+                                int beforMaxDayZon = instanceZone.get(Calendar.DAY_OF_MONTH);
+                                //判断选择时间距离月底几天
+                                int difBeforDay = beforMaxDayZon - dayZone;
+                                switch (difBeforDay) {
+                                    case 0:
+                                        switch (nowDataDayZone) {
+                                            case 1:
+                                                content = "昨天";
+                                                break;
+                                            case 2:
+                                                content = "前天";
+                                                break;
+                                            default:
+                                                content = time;
+                                        }
+                                        break;
+                                    case 1:
+                                        switch (nowDataDayZone) {
+                                            case 1:
+                                                content = "前天";
+                                                break;
+                                            default:
+                                                content = time;
+                                        }
+                                        break;
+                                    default:
+                                        content = time;
+                                        break;
+                                }
+                                break;
+                            case 0:
+                                //判断同日
+                                int i = nowDataDayZone - dayZone;
+                                switch (i) {
+                                    case -2:
+                                        content = "后天";
+                                        break;
+                                    case -1:
+                                        content = "明天";
+                                        break;
+                                    case 0:
+                                        content = "今天";
+                                        break;
+                                    case 1:
+                                        content = "昨天";
+                                        break;
+                                    case 2:
+                                        content = "前天";
+                                        break;
+                                    default:
+                                        content = time;
+                                        break;
+                                }
+                                break;
+                            case -1://明月
+                                //1 获取上月
+                                //获取当月最后一天
+                                nowData.set(Calendar.DAY_OF_MONTH, nowData.getActualMaximum(Calendar.DAY_OF_MONTH));
+                                int nowMaxDayZone = nowData.get(Calendar.DAY_OF_MONTH);
+                                int difmaxZone = nowMaxDayZone - nowDataDayZone;
+                                switch (difmaxZone) {
+                                    case 0:
+                                        content = "今天";
+                                        break;
+                                    case 1:
+                                        content = "明天";
+                                        break;
+                                    case 2:
+                                        content = "后天";
+                                        break;
+                                    default:
+                                        content = time;
+                                        break;
+                                }
+                                break;
+                            default:
+                                content = time;
+                                break;
+
+                        }
+                        break;
+                    case -1://明年
+                        //判断刷选月数是否是第十二个月
+                        switch (monthZone) {
+                            case 0:
+                                //当前月数如果等一,不等于一差的太多
+                                switch (nowmonthZone) {
+                                    case 11:
+                                        //获取上年最后一月的天数
+                                        nowData.set(Calendar.DAY_OF_MONTH, date.getActualMaximum(Calendar.DAY_OF_MONTH));
+                                        int beforMaxDay = nowData.get(Calendar.DAY_OF_MONTH);
+                                        int difBeforDay = beforMaxDay - nowDataDayZone;
+                                        switch (difBeforDay) {
+                                            case 0://最后一天
+                                                switch (dayZone) {
+                                                    case 1:
+                                                        content = "明天";
+                                                        break;
+                                                    case 2:
+                                                        content = "后天";
+                                                        break;
+                                                    default:
+                                                        content = time;
+                                                        break;
+                                                }
+                                                break;
+                                            case 1://最后第2天
+                                                switch (dayZone) {
+                                                    case 1:
+                                                        content = "后天";
+                                                        break;
+                                                    default:
+                                                        content = time;
+                                                        break;
+                                                }
+                                                break;
+                                            default:
+                                                content = time;
+                                                break;
+                                        }
+                                        break;
+                                    default:
+                                        content = time;
+                                        break;
+                                }
+                                break;
+                            default:
+                                content = time;
+                                break;
+                        }
+                        break;
+                    default:
+                        content = time;
+                        break;
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return content;
+
+    }
+
 }

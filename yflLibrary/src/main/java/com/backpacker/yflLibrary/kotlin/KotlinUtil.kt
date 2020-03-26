@@ -16,6 +16,7 @@ import android.widget.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import android.text.InputType
+import com.backpacker.yflLibrary.java.ArithUtil
 import com.backpacker.yflLibrary.java.LocaUtil.getExternalCacheDir
 import com.backpacker.yflLibrary.java.LocaUtil.isMethodsCompat
 import java.io.File
@@ -463,5 +464,9 @@ object KotlinUtil {
     }
 
 
+    fun getStarNumer(int: Float): Float {
+        val i = ArithUtil.divF(int.toDouble(), 20.0, 1)
+        return i.toFloat()
+    }
 
 }

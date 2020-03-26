@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MyUtils</string>
+    <string name="invalid_date">Date must be between %1$s and %2$s.</string>
+
+    <string name="day_name_format" translatable="false">EEEEE</string>
+    <string name="month_name_format" translatable="false">MMMM yyyy</string>
+    <string name="month_only_name_format" translatable="false">MMMM</string>
+    <string name="year_only_format" translatable="false">yyyy</string>
 </resources>

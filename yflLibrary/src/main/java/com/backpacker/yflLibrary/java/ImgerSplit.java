@@ -1,16 +1,8 @@
 package com.backpacker.yflLibrary.java;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ImageView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @version V 1.0 xxxxxxxx
@@ -57,54 +49,5 @@ public class ImgerSplit {
         Bitmap bit1Scale = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix,
                 true);
         return bit1Scale;
-    }
-    /***
-     * @param mContent 上下文
-     * @param img  图片
-     * @param size 倍数
-     * @return
-     */
-    public static  void  setImgerSize(Context mContent, ImageView img,double size){
-        WindowManager wm = (WindowManager) mContent.getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics dm = new DisplayMetrics();
-        wm.getDefaultDisplay().getMetrics(dm);
-        //屏幕宽度
-        int widthPixels = dm.widthPixels;
-        try {
-            double div = ArithUtil.div(widthPixels, size, 2);
-            ViewGroup.LayoutParams layoutParams = img.getLayoutParams();
-            layoutParams.height= (int) div;
-            img.setLayoutParams(layoutParams);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-    /***
-     * @param mContent 上下文
-     * @param img  图片
-     * @param size 倍数
-     * @return
-     */
-    public static  void  setImgerSize(Context mContent, ImageView img,String size){
-        String[] split = size.split("x");
-        try {
-            double sizeDoubul = ArithUtil.div(Double.valueOf(split[0]), Double.valueOf(split[1]), 2);
-            WindowManager wm = (WindowManager) mContent.getSystemService(Context.WINDOW_SERVICE);
-            DisplayMetrics dm = new DisplayMetrics();
-            wm.getDefaultDisplay().getMetrics(dm);
-            //屏幕宽度
-            int widthPixels = dm.widthPixels;
-            try {
-                double div = ArithUtil.div(widthPixels, sizeDoubul, 2);
-                ViewGroup.LayoutParams layoutParams = img.getLayoutParams();
-                layoutParams.height= (int) div;
-                img.setLayoutParams(layoutParams);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
     }
 }

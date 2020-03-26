@@ -8,6 +8,7 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.tencent.bugly.crashreport.CrashReport
 import com.yfl.base.R
+import net.danlew.android.joda.JodaTimeAndroid
 
 /**
  * @Author : YFL  is Creating a porject in tsyc
@@ -50,6 +51,7 @@ class BaseApplication : Application() {
         mInstance = this
         initbug()
         initData()
+        JodaTimeAndroid.init(this)
     }
 
     fun initbug() {

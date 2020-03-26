@@ -22,8 +22,8 @@ public class ArithUtil {
      * @return 两个参数的和
      */
     public static double add(double value1, double value2) {
-        BigDecimal b1 = new BigDecimal(Double.valueOf(value1));
-        BigDecimal b2 = new BigDecimal(Double.valueOf(value2));
+        BigDecimal b1 =BigDecimal.valueOf(value1);
+        BigDecimal b2 = BigDecimal.valueOf(value2);
         return b1.add(b2).doubleValue();
     }
 
@@ -36,9 +36,9 @@ public class ArithUtil {
      * @return 两个参数的和
      */
     public static double add(double value1, double value2, int postion) {
-        BigDecimal b1 = new BigDecimal(Double.valueOf(value1));
-        BigDecimal b2 = new BigDecimal(Double.valueOf(value2));
-        return b1.add(b2).setScale(postion, BigDecimal.ROUND_HALF_UP).doubleValue();
+        BigDecimal b1 =BigDecimal.valueOf(value1);
+        BigDecimal b2 = BigDecimal.valueOf(value2);
+        return b1.add(b2).setScale(postion, BigDecimal.ROUND_DOWN).doubleValue();
     }
 
     public static double strToDouble(String com) {
@@ -58,8 +58,8 @@ public class ArithUtil {
      * @return 两个参数的差
      */
     public static double sub(double value1, double value2) {
-        BigDecimal b1 = new BigDecimal(Double.valueOf(value1));
-        BigDecimal b2 = new BigDecimal(Double.valueOf(value2));
+        BigDecimal b1 =BigDecimal.valueOf(value1);
+        BigDecimal b2 = BigDecimal.valueOf(value2);
         return b1.subtract(b2).doubleValue();
     }
 
@@ -72,8 +72,8 @@ public class ArithUtil {
      * @return 两个参数的差
      */
     public static double sub(double value1, double value2, int postion) {
-        BigDecimal b1 = new BigDecimal(Double.valueOf(value1));
-        BigDecimal b2 = new BigDecimal(Double.valueOf(value2));
+        BigDecimal b1 =BigDecimal.valueOf(value1);
+        BigDecimal b2 = BigDecimal.valueOf(value2);
         return b1.subtract(b2).setScale(postion, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
@@ -86,8 +86,8 @@ public class ArithUtil {
      * @return 两个参数的积
      */
     public static double mul(double value1, double value2) {
-        BigDecimal b1 = new BigDecimal(Double.valueOf(value1));
-        BigDecimal b2 = new BigDecimal(Double.valueOf(value2));
+        BigDecimal b1 =BigDecimal.valueOf(value1);
+        BigDecimal b2 = BigDecimal.valueOf(value2);
         return b1.multiply(b2).doubleValue();
     }
 
@@ -99,20 +99,20 @@ public class ArithUtil {
      * @return 两个参数的积
      */
     public static double mul(double value1, double value2,Integer positon) {
-        BigDecimal b1 = new BigDecimal(Double.valueOf(value1));
-        BigDecimal b2 = new BigDecimal(Double.valueOf(value2));
-        return b1.setScale(positon, BigDecimal.ROUND_HALF_UP).multiply(b2).doubleValue();
+        BigDecimal b1 = BigDecimal.valueOf(value1);
+        BigDecimal b2 =  BigDecimal.valueOf(value2);
+        return b1.multiply(b2).setScale(positon, BigDecimal.ROUND_DOWN).doubleValue();
     }
 
     public static double fourFive(double value1, Integer number) {
-        BigDecimal decimal = new BigDecimal(value1);
-        return decimal.setScale(number, BigDecimal.ROUND_HALF_UP).doubleValue();
+        BigDecimal b1 = BigDecimal.valueOf(value1);
+        return b1.setScale(number, BigDecimal.ROUND_DOWN).doubleValue();
 
     }
 
     public static float toFloat(double value1, Integer number) {
-        BigDecimal decimal = new BigDecimal(value1);
-        return decimal.setScale(number, BigDecimal.ROUND_HALF_UP).floatValue();
+        BigDecimal decimal =  BigDecimal.valueOf(value1);
+        return decimal.setScale(number, BigDecimal.ROUND_DOWN).floatValue();
 
     }
 
@@ -131,10 +131,10 @@ public class ArithUtil {
         if (scale < 0) {
             throw new IllegalAccessException("精确度不能小于0");
         }
-        BigDecimal b1 = new BigDecimal(Double.toString(value1));
-        BigDecimal b2 = new BigDecimal(Double.toString(value2));
+        BigDecimal b1 =BigDecimal.valueOf(value1);
+        BigDecimal b2 = BigDecimal.valueOf(value2);
         //默认保留两位会有错误，这里设置保留小数点后4位
-        return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
+        return b1.divide(b2, scale, BigDecimal.ROUND_DOWN).doubleValue();
     }
 
     /**
@@ -152,10 +152,10 @@ public class ArithUtil {
         if (scale < 0) {
             throw new IllegalAccessException("精确度不能小于0");
         }
-        BigDecimal b1 = new BigDecimal(Double.toString(value1));
-        BigDecimal b2 = new BigDecimal(Double.toString(value2));
+        BigDecimal b1 =BigDecimal.valueOf(value1);
+        BigDecimal b2 = BigDecimal.valueOf(value2);
         //默认保留两位会有错误，这里设置保留小数点后4位
-        return  b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).floatValue();
+        return  b1.divide(b2, scale, BigDecimal.ROUND_DOWN).floatValue();
     }
 
     public static String divNumber(double value1, double value2, int scale) {

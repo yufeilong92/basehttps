@@ -66,6 +66,7 @@
     <style name="GridPasswordView.EditText" parent="GridPasswordView.TextView">
         <item name="android:cursorVisible">false</item>
     </style>
+    <!--密码输入行-->
 
     <style name="GridPasswordView.Divider">
         <item name="android:layout_width">1dp</item>
@@ -73,5 +74,29 @@
         <item name="android:layout_marginTop">1dp</item>
         <item name="android:layout_marginBottom">1dp</item>
     </style>
-    <!--密码输入行-->
+
+    <style name="CalendarTitle">
+        <item name="android:textSize">@dimen/calendar_text_14sp</item>
+        <item name="android:paddingBottom">@dimen/calendar_margin_16dp</item>
+        <item name="android:paddingTop">@dimen/calendar_margin_16dp</item>
+        <item name="android:paddingLeft">@dimen/calendar_margin_16dp</item>
+        <item name="android:paddingRight">@dimen/calendar_margin_16dp</item>
+        <item name="android:background">@color/calendar_title_bg</item>
+        <item name="android:textColor">@color/calendar_text_title</item>
+    </style>
+
+    <style name="CalendarCell">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
+    </style>
+
+    <style name="CalendarCell.DayHeader">
+        <item name="android:textSize">@dimen/calendar_text_14sp</item>
+    </style>
+
+    <style name="CalendarCell.CalendarDate">
+        <item name="android:textSize">@dimen/calendar_text_14sp</item>
+    </style>
 </resources>

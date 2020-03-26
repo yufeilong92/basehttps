@@ -50,10 +50,10 @@
     <declare-styleable name="CEditText">
         <attr name="height" format="dimension" />
         <attr name="count" format="integer" />
-        <attr name="lineWidth" />
-        <attr name="lineColor" />
+        <attr name="lineWidth" format="dimension"/>
+        <attr name="lineColor" format="color" />
         <attr name="focusLineColor" format="color" />
-        <attr name="stokesColor" />
+        <attr name="stokesColor" format="color" />
         <attr name="focusStokeColor" format="color" />
         <attr name="spaceWidth" format="dimension" />
         <attr name="textColor" format="color" />
@@ -61,7 +61,7 @@
         <attr name="circleRadius" format="dimension" />
         <attr name="circleColor" format="color" />
         <attr name="isDrawCircle" format="boolean" />
-        <attr name="isDrawLine"/>
+        <attr name="isDrawLine" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="PayPsdInputView">
@@ -130,5 +130,28 @@
         <attr name="app_title_bar_bg" format="color" />
         <!--        资源背景-->
         <attr name="app_title_bar_resource" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CalendarPickerView">
+        <attr name="android:background"/>
+        <attr name="dividerColor" format="color"/>
+        <attr name="dayBackground" format="reference"/>
+        <attr name="dayTextColor" format="color"/>
+        <attr name="dayHeaderTextColor" format="color"/>
+        <attr name="titleTextStyle" format="reference"/>
+        <attr name="displayHeader" format="boolean"/>
+        <attr name="displayDayNamesHeaderRow" format="boolean"/>
+        <attr name="displayAlwaysDigitNumbers" format="boolean"/>
+        <attr name="headerTextColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="calendar_cell">
+        <attr name="state_selectable" format="boolean" />
+        <attr name="state_current_month" format="boolean" />
+        <attr name="state_today" format="boolean" />
+        <attr name="state_range_first" format="boolean" />
+        <attr name="state_range_middle" format="boolean" />
+        <attr name="state_range_last" format="boolean" />
+        <attr name="state_highlighted" format="boolean" />
     </declare-styleable>
 </resources>

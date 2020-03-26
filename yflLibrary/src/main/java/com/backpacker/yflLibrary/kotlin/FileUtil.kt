@@ -1,6 +1,9 @@
 package com.backpacker.yflLibrary.kotlin
 
+import android.content.Context
+import java.io.BufferedReader
 import java.io.File
+import java.io.InputStreamReader
 
 
 /**
@@ -33,5 +36,43 @@ object FileUtil {
             return true
         }
         return false
+    }
+
+
+    fun getFromAssets(m: Context, str: String): String {
+        try {
+            var resul: StringBuffer = StringBuffer()
+            val open = m.resources.assets.open(str)
+            val inputRead: InputStreamReader = InputStreamReader(open)
+            val bufReader = BufferedReader(inputRead)
+            var line: String = ""
+            while ((bufReader.readLine().also { line = it }) != null) {
+                resul.append(line)
+            }
+            open.close()
+            inputRead.close()
+            return resul.toString()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return ""
+        }
+    }
+
+    fun getFormAssets(context: Context, fileName: String): String? {
+        val stringBuilder = StringBuilder()
+        BufferedReader(InputStreamReader(context.assets.open(fileName), "UTF-8")).run {
+            var line: String? = ""
+            do {
+                line = readLine()
+                if (line != null) {
+                    stringBuilder.append(line)
+                } else {
+                    break
+                    close()
+                }
+            } while (true)
+            return stringBuilder.toString()
+        }
+        return null
     }
 }
